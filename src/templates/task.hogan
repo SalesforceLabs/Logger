@@ -1,0 +1,18 @@
+<form id="taskForm" action="#" class="actionForm">
+  {{#doShowLocation}}
+  <!--<div id="map_canvas" style="width:100%; height:100px"></div>-->
+  {{/doShowLocation}}
+  <input id="subject" class="input" type="{{subjectType}}" name="body" value="{{subject}}" placeholder="{{subject_placeholder}}"/>
+  {{#doShowDueDate}}
+  <input id="dueDate" class="nativedatepicker" type="date" placeholder="{{reminder_date}}" /><label> {{reminder_date}}</label><br/>
+  {{/doShowDueDate}}
+  <textarea id="body" type="text" placeholder="{{bodyPlaceholder}}">{{text}}</textarea><br/>
+  <button id="cancel" type="button" class="button cancelButton">{{cancel}}</button>
+  <button id="submit" type="button" class="button submitButton">{{submitLabel}}</button>
+  {{#hasChatter}}<div id="chatterPost" class="formToggle">
+    <span class="toggleLabel">{{share_on_chatter}}</span>
+    <div id="chatter" class="toggle">
+      <div class="toggle-handle"></div>
+    </div>
+  </div>{{/hasChatter}}
+</form>

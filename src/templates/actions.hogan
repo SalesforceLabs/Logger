@@ -1,0 +1,9 @@
+<nav id="detailAction">
+  {{#items}}
+  	<ul id="actions">
+	  {{#actions}}
+	    <li id="{{id}}" class="action{{count}} actionUp"><img width="37" height="33" class="{{id}}" src="images/img_trans.gif">{{label}}</li>
+	  {{/actions}}
+  	</ul>
+  {{/items}}
+</nav>

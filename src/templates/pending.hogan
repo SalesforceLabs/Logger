@@ -1,0 +1,5 @@
+<div id="pendingOverlay">
+  <div id="pending">
+    <label>{{label}}</label>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div id="related_list_container">
+  <ul id="related_list">
+    {{#list}}
+      <li id="{{Id}}" class="relatedListUp">
+      	<img id="drillDownArrow" width="8" height="9" src="images/drilldownarrow{{#isRetina}}@2x{{/isRetina}}.png" >
+        <div>{{Name}}</div>
+      </li>
+    {{/list}}
+  </ul>
+</div>

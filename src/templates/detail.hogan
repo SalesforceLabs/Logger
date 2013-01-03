@@ -1,0 +1,30 @@
+<div class="page detail" id="detail_{{id}}">
+  <div id="body" class="scroller">
+    <!--<embed id="glare" src="images/glare.svg" type="image/svg+xml" />-->
+    
+    <div id="{{#isContact}}typeContact{{/isContact}}{{#isAccount}}typeAccount{{/isAccount}}{{#isOpportunity}}typeOpportunity{{/isOpportunity}}{{#isLead}}typeLead{{/isLead}}"></div>
+    <div id="detailPending"></div>
+
+    <div id="detailHeader">
+      {{#isContact}}
+        <div class="detailName">{{name}}</div>
+        <div class="detailTitle"></div><br/>
+      {{/isContact}}
+      {{#isAccount}}
+        <div class="detailName">{{name}}</div>
+      {{/isAccount}}
+      {{#isOpportunity}}
+        <div class="detailName">{{name}}</div>
+        <div class="detailTitle"></div><br/>
+      {{/isOpportunity}}
+      {{#isLead}}
+        <div class="detailName">{{name}}</div>
+        <div class="detailTitle"></div><br/>
+      {{/isLead}}
+    </div>
+
+    <div id="detailContent"></div>
+    
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+NETWORK:
+*
+
+CACHE:
+#js
+javascripts/client.js
+templates
+
+#css
+stylesheets/main.css

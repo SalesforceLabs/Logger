@@ -1,0 +1,12 @@
+<div id="dialogOverlay">
+  <div id="dialog">
+    <header>
+      <label>{{title}}</label>
+    </header>
+    <article>{{body}}</article>
+    <footer>
+      {{#showCancel}}<button id="cancel" type="button" class="button cancelDialog">{{cancelLabel}}</button>{{/showCancel}}
+      <button id="submit" type="button" class="button submitDialog">{{submitLabel}}</button>
+    </footer>
+  </div>
+</div>

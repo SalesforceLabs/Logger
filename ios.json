@@ -1,0 +1,45 @@
+{
+  "build": "./www",
+  "html":[
+    {
+      "title": "Logger",
+      "layout": "src/views/container.hogan", 
+      "index": "src/views/index.hogan",
+      "filename": "./www/index.html",
+      "css": "main.css",
+      "libs": [
+        {
+          "jsDir": "./libs/client/container",
+          "jsFile": "./www/javascripts/container.js", 
+          "jsFiles": ["cordova-1.8.1.js", "SFHybridApp.js", "SalesforceOAuthPlugin.js", "EmailComposer.js", "PhoneDialer.js", "applicationPreferences.js"]
+        },
+        {
+          "jsDir": "./libs/client",
+          "jsFile": "./www/javascripts/libs.js", 
+          "jsFiles": ["jquery.1.7.1.min.js","hammer.js","jquery.hammer.js","hogan-1.0.5.js","jquery.spin.js","spin.min.js","iscroll.js"]
+        }
+      ],
+      "scriptTags": ["L.js", "LoggrUtil.js", "EventDispatcher.js", "Dialog.js", "Config.js", "LocalyticsPhoneGap.js", "ContainerAuth.js", "InvokeUrl.js", "SFDC.js", "Platform.js", "BaseAction.js", "Task.js", "Note.js", "Call.js", "OpptyEdit.js", "Edit.js", "Model.js", "UI.js", "Search.js", "Settings.js", "Panel.js", "Action.js", "Detail.js", "Main.js", "templates.js"]
+    }
+  ],
+  "coffeescript": [
+    {
+      "source": "./src/coffeescripts",
+      "destination": "./www/javascripts"
+    }
+  ],
+  "stylus": {
+    "source": "./src/stylesheets",
+    "destination": "./www"
+  },
+  "hogan": {
+    "source": "./src/templates",
+    "destination": "./www/javascripts/templates.js",
+    "namespace": "T"
+  },
+  "assets": [
+    {"source":"./src/images", "destination": "./www/images"},
+    {"source":"./src/locales.json", "destination": "./www/locales.json", "watch": true},
+    {"source":"./src/locales.json", "destination": "./public/locales.json", "watch": true}
+  ]
+}

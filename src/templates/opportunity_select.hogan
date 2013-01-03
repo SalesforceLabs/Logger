@@ -1,0 +1,6 @@
+<select id='opportunity'>
+  <option id=''>{{oppty_select_label}}</option>
+  {{#opportunities}}
+    <option id='{{Id}}'>{{Name}}</option>
+  {{/opportunities}}
+</select>

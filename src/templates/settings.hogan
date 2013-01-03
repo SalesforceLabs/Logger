@@ -1,0 +1,47 @@
+<div id="settings">
+  <center><span class="settingsTitle">{{name}}</span> <span class="settingsLabel">{{version}}</span></center><br/>
+  <ul id="tableList">
+    {{#options1}}
+    <li id="{{id}}">
+      <img id="drillDownArrow" width="8" height="9" src="images/drilldownarrow{{#isRetina}}@2x{{/isRetina}}.png">
+      <div>{{label}}</div>
+    </li>
+    {{/options1}}
+  </ul>
+  <br/>
+  <span class="settingsTitle">{{objectsLabel}}</span>
+  <ul id="tableList">
+    {{#objects}}
+    <li id="{{id}}">
+      <img id="checkmark" style="visibility:{{visibility}}" width="16" height="16" src="images/checkmark{{#isRetina}}@2x{{/isRetina}}.png">
+      <div class="{{objectClass}}">{{label}}</div>
+    </li>
+    {{/objects}}
+  </ul>
+  <br/><br/>
+  <span class="settingsTitle">{{email_to_salesforce}}</span><img src="images/questionmark{{#isRetina}}@2x{{/isRetina}}.png" id="bccEmailHelp" width="17" height="17">
+  <div id="bccContainer">
+    
+    <input id="bccEmail" type="email" class="input" placeholder="Salesforce BCC Email" /><span class="hint">{{bcc_hint}}</span>
+  </div>
+  <br/><br/>
+  <ul id="tableList">
+    {{#options2}}
+    <li id="{{id}}">
+      <img id="drillDownArrow" width="8" height="9" src="images/drilldownarrow{{#isRetina}}@2x{{/isRetina}}.png">
+      <div>{{label}}</div>
+    </li>
+    {{/options2}}
+  </ul>
+  <br/>
+  <ul id="tableList">
+    {{#options3}}
+    <li id="{{id}}">
+      <img id="drillDownArrow" width="8" height="9" src="images/drilldownarrow{{#isRetina}}@2x{{/isRetina}}.png">
+      <div>{{label}}</div>
+    </li>
+    {{/options3}}
+  </ul>
+  <br/>
+  <center><small>© 2012 salesforce.com</small></center>
+</div>

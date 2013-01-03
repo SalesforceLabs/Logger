@@ -1,0 +1,7 @@
+<div class="modal">
+    <div class="header">
+        <span class="title">{{title}}</span>
+        <button id="closeButton" class="button modalButton">{{closeText}}</button>
+    </div>
+    <div class="content"><div class="scroller">{{{content}}}</div></div>
+</div>

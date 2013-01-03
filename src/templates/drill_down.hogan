@@ -1,0 +1,10 @@
+<div id="drill_down">
+  <ul id="tableList">
+    {{#options}}
+    <li id="{{id}}">
+      <img id="drillDownArrow" width="8" height="9" src="images/drilldownarrow{{#isRetina}}@2x{{/isRetina}}.png">
+      <div>{{label}}</div>
+    </li>
+    {{/options}}
+  </ul>
+</div>

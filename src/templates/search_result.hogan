@@ -1,0 +1,7 @@
+<ul id="searchResultList">
+  {{#list}}
+    <li id="{{Id}}" class="listUp">
+      <span class="name">{{Name}}</span>{{#accountName}}<span class="brackets">{{accountName}}</span>{{/accountName}}
+    </li>
+  {{/list}}
+</ul>

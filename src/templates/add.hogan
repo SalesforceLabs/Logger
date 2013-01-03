@@ -1,0 +1,23 @@
+<form id="addForm" action="#" class="actionForm">
+  <h1>{{message}}</h1><label id="error"></label>
+  {{#address}}
+  <input id="street" class="input" type="text" placeholder="{{street_placeholder}}" value="{{Street}}">
+  <input id="city" class="input" type="text" placeholder="{{city_placeholder}}" value="{{City}}">
+  <input id="state" class="input" type="text" placeholder="{{state_placeholder}}" value="{{State}}">
+  <input id="zip" class="input" type="text" pattern="[0-9]*" placeholder="{{zip_placeholder}}" value="{{PostalCode}}">
+  {{/address}}
+  {{#email}}
+  <input id="Email" class="input" type="email" placeholder="{{email_placeholder}}">
+  {{/email}}
+  {{#phone}}
+    {{#showPhone}}
+    <input id="phone" class="input" type="tel" title="{{phone_placeholder}}" placeholder="{{phone_placeholder}}">
+    {{/showPhone}}
+    {{#showMobile}}
+    <input id="mobile" class="input" type="tel" title="{{mobile_placeholder}}" placeholder="{{mobile_placeholder}}">
+    {{/showMobile}}
+  {{/phone}}
+  <br/><br/>
+  <button id="cancel" type="button" class="button cancelButton">{{cancel}}</button>
+  <button id="submit" class="button submitButtonDisabled" type="button">{{save}}</button>
+</form>

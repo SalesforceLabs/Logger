@@ -1,0 +1,11 @@
+<div id="searchHeader">
+	<form id="searchForm" name="searchForm" action="#" style="display: inline">
+    	<input id="search" type="search" class="input" title="Search" name="q" placeholder="{{search}}"
+      style="width: 100%; display: inline">
+      	<div id="xDiv">
+      		<img id="x" src="images/x{{#isRetina}}@2x{{/isRetina}}.png" width="19" height="19">
+      	</div>
+	</form>
+</div>
+
+<div id="searchResult" />

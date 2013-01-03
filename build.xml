@@ -1,0 +1,143 @@
+<project name="Ant Logger">
+   
+    <property name="app.name" value="&quot;Logger&quot;" />
+    <property name="project.dir" value="${basedir}/xcode" />
+    <property name="target.name" value="&quot;Sales Logger&quot;" />
+    <property name="configuration" value="Release" />
+    <property name="sdk" value="iphoneos" />
+    <property name="install_path" value="${basedir}/artifacts" />
+    <property name="action" value="install" />
+    
+    <target name="enterprise">
+        <property environment="env" /> 
+        <echo message="Build ${env.BUILD_NUMBER}"/>
+        <property name="target.release" value="&quot;Logger Release&quot;" />
+        <antcall target="clean"/>
+        <antcall target="phonegap"/>
+        <antcall target="localytics"/>
+        <antcall target="plist"/>
+        <antcall target="xcodebuild"/>
+        <antcall target="generateEnterpriseIPA"/>
+    </target>
+
+    <target name="appstore">
+        <property environment="env" /> 
+        <echo message="Build ${env.BUILD_NUMBER}"/>
+        <property name="target.release" value="&quot;Logger AppStore&quot;" />
+        <antcall target="clean"/>
+        <antcall target="phonegap"/>
+        <antcall target="localytics"/>
+        <antcall target="plist"/>
+        <antcall target="xcodebuild"/>
+        <antcall target="generateAppStoreIPA"/>
+
+        <zip destfile="LoggrAppStore.zip">
+            <zipfileset dir="artifacts" includes="**/*.ipa"/>
+            <zipfileset dir="AppStore"/>
+        </zip>
+    </target>
+
+    <!-- clean -->
+    <target name="clean">
+        <delete dir="artifacts"/>
+    </target>
+
+    <target name="phonegap">
+        <echo message="Client Id ${client_id}"/>
+        <delete dir="www"/>
+        <mkdir dir="www"/>
+        <exec executable="/usr/local/bin/coffee">
+          <arg value="build.coffee"/>
+          <arg value="ios.json"/>
+          <arg value="${client_id}"/>
+        </exec> 
+    </target>
+
+    <target name="compileAndroid">
+        <echo message="Client Id ${client_id}"/>
+        <echo message="Client Id ${env.LOGGER_CLIENT_ID}"/>
+        <delete dir="android/assets/www"/>
+        <mkdir dir="android/assets/www"/>
+        <exec executable="/usr/local/bin/coffee">
+          <arg value="build.coffee"/>
+          <arg value="android.json"/>
+          <arg value="${client_id}"/>
+        </exec>
+    </target>
+
+    <target name="localytics">
+        <echo>Set Localytics Key ${localytics-key}</echo>
+        <replace file="xcode/Sales Logger/Classes/AppDelegate.m"
+                 summary="true"
+                 token="LOCALYTICS_KEY"
+                 value="${localytics-key}"/>
+    </target>
+
+    <target name="plist">
+        <exec executable="/usr/libexec/PlistBuddy">
+          <arg value="-c"/>
+          <arg value="Delete :Plugins:Debug Console"/>
+          <arg value="xcode/Sales Logger/Cordova.plist"/>
+        </exec>
+
+        <exec executable="/usr/libexec/PlistBuddy">
+          <arg value="-c"/>
+          <arg value="Set CFBundleVersion ${env.BUILD_NUMBER}"/>
+          <arg value="xcode/Sales Logger-AppStore-Info.plist"/>
+        </exec>
+        <exec executable="/usr/libexec/PlistBuddy">
+          <arg value="-c"/>
+          <arg value="Set CFBundleVersion ${env.BUILD_NUMBER}"/>
+          <arg value="xcode/Sales Logger-Release-Info.plist"/>
+        </exec>
+
+        <replace file="www/javascripts/LoggrUtil.js"
+                 summary="true"
+                 token="LoggrUtil.DEBUG = true;"
+                 value="LoggrUtil.DEBUG = false;"/>
+
+        <replace file="www/javascripts/Platform.js"
+                 summary="true"
+                 token="{{BUILD_NUMBER}}"
+                 value="#${env.BUILD_NUMBER}"/>
+    </target>
+
+    <!-- compile -->
+    <target name="xcodebuild">
+        <property name="action" value="build"/>
+        <echo>${action}ing ${app.name} for SDK ${sdk}</echo>
+
+        <exec executable="xcodebuild" failonerror="true" logError="true">
+            <arg line="-project ${project.dir}/${app.name}.xcodeproj -target ${target.release} -configuration ${configuration} -sdk ${sdk} INSTALL_ROOT=${install_path} ${action}"/>
+        </exec>
+    </target>
+
+    <target name="generateEnterpriseIPA" description="Generate the IPA file after building" >
+        <property name="embedProfile" value="4PZ44KB26X.com.salesforce.internal.saleslogger_Internal.mobileprovision" />
+        <echo>embedProfile = '${embedProfile}'</echo>
+        <copy file="${user.home}/Library/MobileDevice/Provisioning Profiles/${embedProfile}" todir="${basedir}"/>
+        
+        <exec executable="xcrun" failOnError="true">
+            <arg line="-sdk iphoneos PackageApplication " />
+            <arg line="-v &quot;${install_path}/Applications/Logger.app&quot; "/>
+            <arg line="-o &quot;${install_path}/Logger-Enterprise.ipa&quot; "  />
+            <arg line="--sign &quot;iPhone Distribution&quot;" />
+            <arg line="--embed &quot;${basedir}/${embedProfile}&quot; " />
+        </exec>
+    </target>
+
+    <target name="generateAppStoreIPA" description="Generate the IPA file after building" >
+        <property name="embedProfile" value="62J96EUJ9N.com.salesforce.saleslogger_AppStore.mobileprovision" />
+        <echo>embedProfile = '${embedProfile}'</echo>
+        <copy file="${user.home}/Library/MobileDevice/Provisioning Profiles/${embedProfile}" todir="${basedir}"/>
+        
+        <exec executable="xcrun" failOnError="true">
+            <arg line="-sdk iphoneos PackageApplication " />
+            <arg line="-v &quot;${install_path}/Applications/Logger.app&quot; "/>
+            <arg line="-o &quot;${install_path}/Logger-AppStore.ipa&quot; "  />
+            <arg line="--sign &quot;iPhone Distribution: salesforce.com&quot;" />
+            <arg line="--embed &quot;${basedir}/${embedProfile}&quot; " />
+        </exec>
+    </target>
+
+</project>

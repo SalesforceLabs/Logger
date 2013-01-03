@@ -1,0 +1,6 @@
+<div id="home" class='page flex-box-vertical'>
+  <ul id="mainNav">
+    <li id="recentNav"><img src="images/nav/recent{{#isRetina}}@2x{{/isRetina}}.png" width="27" height="27"></li><li id="searchNav"><img src="images/nav/search{{#isRetina}}@2x{{/isRetina}}.png" width="27" height="27"></li><li id="settingsNav"><img src="images/nav/settings{{#isRetina}}@2x{{/isRetina}}.png" width="27" height="27"></li>
+  </ul>
+  <div id="content" />
+</div>

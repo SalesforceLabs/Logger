@@ -1,0 +1,309 @@
+{
+  "ok":{
+    "en": "Ok",
+    "de": "Ok"
+  },
+  "close":{
+    "en": "Close",
+    "de": "Schließen"
+  },
+  "accept":{
+    "en": "Accept",
+    "de": "Akzeptieren"
+  },
+  "cancel":{
+    "en": "Cancel",
+    "de": "Abbrechen"
+  },
+  "save":{
+    "en": "Save",
+    "de": "Speichern"
+  },
+  "saved":{
+    "en": "Saved!",
+    "de": "Gespeichert!"
+  },
+
+  "auth_error_alert":{
+    "en": "Authentication Error ({0}). Please retry.",
+    "de": "Authentifizierungsfehler ({0}). Bitte versuchen Sie erneut."
+  },
+  "error":{
+    "en": "Error",
+    "de": "Fehler"
+  },
+  "error_alert":{
+    "en": "Sorry. It looks like you found a bug. Please help us fix it by sending your app logs.",
+    "de": "Es tut uns leid. Es sieht so aus als hätten Sie einen Fehler gefunden. Bitte helfen Sie uns den Fehler zu beheben indem Sie uns die Log Datei schicken."
+  },
+  "offline_alert":{
+    "en": "Your device currently appears to be offline. Please check your internet connection and try again!",
+    "de": "Ihr Gerät ist zur Zeit offline. Bitte überprüfen Sie Ihre Internetverbinung und versuchen Sie erneut."
+  },
+  "offline":{
+    "en": "Offline",
+    "de": "Offline"
+  },
+  "send":{
+    "en": "Send",
+    "de": "Senden"
+  },
+
+  "no_recently_viewed":{
+    "en": "No recently viewed found.",
+    "de": "Keine kürzlich angesehenen Einträge gefunden."
+  },
+
+  "check-in":{
+    "en": "Check-In",
+    "de": "Check-In"
+  },
+  "follow-up":{
+    "en": "Follow-Up",
+    "de": "Wiedervorlage"
+  },
+  "take_note":{
+    "en": "Take Note",
+    "de": "Notiz"
+  },
+  "call":{
+    "en": "Call",
+    "de": "Anrufen"
+  },
+  "map":{
+    "en": "Map",
+    "de": "Karte"
+  },
+  "email":{
+    "en": "Email",
+    "de": "Email"
+  },
+  "close_date":{
+    "en": "Close Date",
+    "de": "Close Date"
+  },
+  "stage":{
+    "en": "Stage",
+    "de": "Stage"
+  },
+
+  "visited_customer":{
+    "en": "Visited {0}",
+    "de": "{0} besucht."
+  },
+  "checkin_body":{
+    "en": "How did the meeting go?",
+    "de": "Wie ist das Treffen verlaufen?"
+  },
+  "what_next":{
+    "en": "What do you need to do?",
+    "de": "Was müssen Sie als nächstes machen?"
+  },
+  "save_task":{
+    "en": "Save Task",
+    "de": "Aufgabe speichern"
+  },
+  "log_call":{
+    "en": "Log Call",
+    "de": "Anruf loggen"
+  },
+  "call_content":{
+    "en": "What did you talk about?",
+    "de": "Über was haben Sie gesprochen?"
+  },
+  "log_email":{
+    "en": "Log Email",
+    "de": "Email loggen"
+  },
+  "email_content":{
+    "en": "What was this message about?",
+    "de": "Worüber war die Nachricht?"
+  },
+
+
+  "subject_placeholder":{
+    "en": "Subject",
+    "de": "Betreff"
+  },
+  "oppty_select_label":{
+    "en": "Select Opportunity (optional)",
+    "de": "Opportunity Auswählen (optional)"
+  },
+  "reminder_date":{
+    "en": "Reminder Date",
+    "de": "Erinnerungsdatum"
+  },
+
+  "note_placeholder":{
+    "en": "Type your note here...",
+    "de": "Tragen Sie Ihre Notiz hier ein..."
+  },
+  "save_note":{
+    "en": "Save Note",
+    "de": "Speichern"
+  },
+  "private_note":{
+    "en": "Private Note",
+    "de": "Private Notiz"
+  },
+
+  "add_number":{
+    "en": "Please add a phone number",
+    "de": "Bitten fügen Sie eine Telefonnummer hinzu"
+  },
+  "add_email":{
+    "en": "Sorry, there's no email listed. Would you like to add one now?",
+    "de": "Es ist keine Email hinterlegt. Wollen Sie jetzt eine hinzufügen?"
+  },
+  "add_address":{
+    "en": "Sorry, there's no address listed. Would you like to add one now?",
+    "de": "Es ist keine Addresse hinterlegt. Wollen Sie jetzt eine hinzufügen?"
+  },
+  "street":{
+    "en": "Street",
+    "de": "Straße"
+  },
+  "city":{
+    "en": "City",
+    "de": "Ort"
+  },
+  "state":{
+    "en": "State",
+    "de": "Staat"
+  },
+  "zip":{
+    "en": "Zip / Postalcode",
+    "de": "Postleitzahl"
+  },
+  "phone":{
+    "en": "Phone",
+    "de": "Nummer"
+  },
+  "mobile":{
+    "en": "Mobile",
+    "de": "Handy"
+  },
+  "choose_a_number":{
+    "en": "Choose a phone number...",
+    "de": "Bitten wählen Sie eine Nummer aus..."
+  },
+  "phone_":{
+    "en": "Phone: {0}",
+    "de": "Telefon: {0}"
+  },
+  "mobile_":{
+    "en": "Mobile: {0}",
+    "de": "Handy: {0}"
+  },
+  "phone+":{
+    "en": "Phone: Add number",
+    "de": "Telefon: Hinzufügen"
+  },
+  "mobile+":{
+    "en": "Mobile: Add number",
+    "de": "Handy: Hinzufügen"
+  },
+  "log_without_dialing":{
+    "en": "Log without dialing",
+    "de": "Loggen ohne zu wählen"
+  },
+
+  "search":{
+    "en": "Search",
+    "de": "Suche"
+  },
+  "search_min_length":{
+    "en": "Search term must be at least 2 characters long.",
+    "de": "Der Suchbegriff muss mindestens zwei Zeichen lang sein."
+  },
+  "no_search_matches":{
+    "en": "No matches found for <em>{0}</em>.",
+    "de": "Keine Treffer für <em>{0}</em>."
+  },
+
+  "thanks":{
+    "en": "Thanks!",
+    "de": "Danke!"
+  },
+  "saving":{
+    "en": "Saving...",
+    "de": "Speichern..."
+  },
+  "take_a_quick_survey":{
+    "en": "Take a quick survey",
+    "de": "Befragung zu Logger"
+  },
+  "share_on_chatter":{
+    "en": "Share on Chatter",
+    "de": "Auf Chatter teilen"
+  },
+  "submit_feedback":{
+    "en": "Submit Feedback",
+    "de": "Rückmeldung geben"
+  },
+  "send_logs":{
+    "en": "Send Logs",
+    "de": "Log Datei senden"
+  },
+  "follow_on_twitter":{
+    "en": "Follow on Twitter",
+    "de": "Auf Twitter folgen"
+  },
+  "objects":{
+    "en": "Objects",
+    "de": "Objekte"
+  },
+  "email_to_salesforce":{
+    "en": "Email to Salesforce",
+    "de": "Email an Salesforce"
+  },
+  "bcc_hint":{
+    "en": "Automatically BCC this address when sending email from Logger.",
+    "de": "Diese Adresse automatisch als BCC hinzufügen wenn eine Email von Logger gesendet wird."
+  },
+  "about":{
+    "en": "About",
+    "de": "Über Logger"
+  },
+  "eula":{
+    "en": "EULA",
+    "de": "EULA"
+  },
+  "logout":{
+    "en": "Logout",
+    "de": "Abmelden"
+  },
+  "deselect_all_objects":{
+    "en": "Cannot deselect {0}. At least one object needs to stay selected.",
+    "de": "{0} kann nicht deselektiert werden. Es muss mindestens ein Objekt ausgewählt bleiben."
+  },
+  "logout_confirm":{
+    "en": "Are you sure you want to logout?",
+    "de": "Sind Sie sicher, dass Sie sich abmelden wollen?"
+  },
+  "post_on_chatter":{
+    "en": "Post on Chatter.",
+    "de": "Auf Chatter teilen."
+  },
+  "viral_chatter_post":{
+    "en": "I'm using Logger from Salesforce Labs to log activity in seconds, check-in, take notes and more. You can download it here: iOS - http://bit.ly/LoggeriOS  Android - http://bit.ly/LoggerAndroid",
+    "de": "Ich benutze Logger von Salesforce Labs für Aufgaben, Checkins, Notizen und mehr. Download hier: iOS - http://bit.ly/LoggeriOS  Android - http://bit.ly/LoggerAndroid"
+  },
+
+  "error_rest_api":{
+    "en": "Sorry, we're unable to connect.\nPlease ask your administrator to enable REST API access to Salesforce.com, then try again.",
+    "de": "Die Anwendung konnte sich nicht konnektieren.\nBitte kontaktieren Sie Ihren Salesforce Administrator um die REST API zu erlauben und versuchen Sie erneut."
+  },
+  "error_request_limit_exceeded":{
+    "en": "Sorry, you have exceeded your request limit. Please contact your Salesforce administrator for further assistance.",
+    "de": "Sie haben das Request Limit erreicht. Bitte kontakieren Sie Ihren Salesforce Administrator für weitere Hilfe."
+  },
+  "error_custom_validation_rule":{
+    "en": "Sorry, we found a custom validation rule. Logger does not support custom validation rules at this time. Please contact saleslogger@salesforce.com for further information.",
+    "de": "Wir haben eine Custom Validation Rule gefunden. Diese Funktion wird von Logger derzeit nicht unterstützt. Bitten kontakieren sie saleslogger@salesforce.com für weitere Informationen."
+  },
+  "error_service_unavailable":{
+    "en": "Sorry, the service is currently unavailable. Please try again later.",
+    "de": "Der Service ist zur Zeit nicht verfügbar. Bitte versuchen Sie es später erneut."
+  }
+}

@@ -1,0 +1,33 @@
+node_modules
+docs
+.DS_Store
+app.js
+public
+.idea
+npm-debug.log
+
+/www/
+temp
+
+xcode/Sales Logger.xcodeproj/xcuserdata
+xcode/Sales Logger.xcodeproj/project.xcworkspace/xcuserdata
+xcode/Sales Loop.xcodeproj/xcuserdata
+xcode/Sales Loop.xcodeproj/project.xcworkspace/xcuserdata
+xcode/Logger.xcodeproj/xcuserdata
+xcode/Logger.xcodeproj/project.xcworkspace/xcuserdata
+xcode/Sales Logger/www
+xcode/dev_cert_srohde.developerprofile
+xcode/build
+
+android/gen
+android/bin
+android/local.properties
+android/lint.xml
+android/assets/www
+
+
+artifacts
+
+test/client
+
+dump.rdb

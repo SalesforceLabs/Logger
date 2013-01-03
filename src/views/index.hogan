@@ -1,0 +1,10 @@
+<div id="viewport">
+	<div id="start" style="padding: 10 10 10 10; display:none;">
+		<img id="logo" src="images/logo@2x.png" width="147" height="147" alt="Loggr" style="padding-top: 20px">
+		<br/>
+		<p style="font-size: 18px; padding-top: 0px; color: #CCC; text-shadow: 0px 0px 2px #666;"><strong>Logger</strong><br/><em><small>Log sales activity in seconds and<br/>share that activity with Chatter.</small></em></p>
+		<button style="margin-top: 10px;" class="button signinButton" onclick="javascript:signIn()">Sign In</button>
+	</div>
+	<div id="app" class="page" style="display:none;"></div>
+	<div id='overlay'/>
+</div>

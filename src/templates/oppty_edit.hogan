@@ -1,0 +1,18 @@
+<form id="editForm" action="#" class="actionForm">
+  <h1>{{message}}</h1><label id="error"></label>
+  {{#showCloseDate}}
+  <label>Close Date</label><br/>
+  <input id="closeDate" class="nativedatepicker" type="date" placeholder="Due Date" value="{{date}}" />
+  {{/showCloseDate}}
+  {{#showStageName}}
+  <label>Stage</label><br/>
+  <select id='stage'>
+    {{#stages}}
+    <option id='{{value}}' {{#selected}}selected{{/selected}}>{{label}}</option>
+    {{/stages}}
+  </select>
+  {{/showStageName}}
+  <br/><br/>
+  <button id="cancel" type="button" class="button cancelButton">Cancel</button>
+  <button id="submit" type="button" class="button submitButtonDisabled">Update</button>
+</form>

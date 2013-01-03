@@ -1,0 +1,16 @@
+<cordova> 
+  
+  <!-- 
+  access elements control the Android whitelist . 
+  Domains are assumed blocked unless set otherwise 
+  -->
+  <access>
+    <access origin="https://*.salesforce.com"/>
+    <access origin="https://*.force.com"/>
+    <access origin="https://analytics.localytics.com"/>
+  </access>
+
+  <log level="DEBUG"/> 
+  <preference name="classicRender" value="true" />
+
+</cordova>

@@ -1,0 +1,11 @@
+<form id="noteForm" action="#" class="actionForm">
+  <textarea id="body" type="text" row="10" columns="100" placeholder="{{placeholder}}" autofocus></textarea><br/>
+  <button id="cancel" type="button" class="button cancelButton">{{cancel}}</button>
+  <button id="submit" type="button" class="button submitButtonDisabled">{{save_note}}</button>
+  <div id="privateNote" class="formToggle">
+    <span class="toggleLabel">{{private_note}}</span>
+    <div id="private" class="toggle">
+      <div class="toggle-handle"></div>
+    </div>
+  </div>
+</form>

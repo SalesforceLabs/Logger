@@ -1,0 +1,912 @@
+@import "src/stylesheets/mixins"
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display block
+
+audio, canvas, video
+  display inline-block
+  *display inline
+  *zoom 1
+
+audio:not([controls])
+  display none
+
+/* Ensures content is hidden from all presentations, including screenreaders */
+[hidden]
+  display none
+  visibility hidden
+
+html
+  height 100%
+  font-size 100%
+  -webkit-text-size-adjust 100%
+  -ms-text-size-adjust 100%
+
+  /* Disable any selection */
+  -webkit-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  -webkit-touch-callout none
+  -webkit-user-drag none
+  -webkit-tap-highlight-color rgba(0,0,0,0)
+
+body
+  padding 0px
+  margin 0 auto
+  min-height 100%
+  width 100%
+  font 14px "Helvetica Neue", Helvetica, Arial, sans-serif
+  background-color #FFF
+  color #eee
+  overflow-x hidden
+  background: url("images/bg.png") repeat;
+
+a
+  color grey
+  text-decoration none
+
+a:hover
+  color white
+  text-decoration underline
+
+ul, div
+  margin 0
+  padding 0
+
+ul
+  list-style none
+
+#overlay
+  pointer-events none
+  position absolute
+  trbl(0, 0, 0, 0)
+
+#dialogOverlay
+  position absolute
+  trbl(0, 0, 0, 0)
+  background-color rgba(0, 0, 0, .75)
+
+#pendingOverlay
+  position absolute
+  trbl(0, 0, 0, 0)
+  background-color rgba(0, 0, 0, .75)
+
+  #pending
+    borderRadius(10px)
+    position fixed
+    left 50%
+    top 50%
+    width 150px
+    margin-left -75px
+    height 100px
+    margin-top -50px
+    background-color rgba(0, 0, 0, .5)
+    text-align center
+    vertical-align middle
+    img
+      position absolute
+      top 50%
+      left 50%
+      margin-top -20px
+      margin-left -20px
+    label
+      font-weight bold
+      color #FFF
+      position relative
+      top 75px
+
+.page
+  position absolute
+  trbl(0, 0, 0, 0)
+
+.message
+  padding 100px 10px 10px 10px
+  text-align center
+  a
+    color white
+    text-decoration underline
+
+.actionForm.absolute
+  position absolute
+  trbl(82px, 0, 0, 0)
+  
+.actionForm
+  backgroundGradient(#FFFFFF, #DBDBDB)
+  padding 10px 10px 10px 10px
+
+  button
+    margin-bottom 16px
+    height 40px
+    font-size 15px
+
+  h1
+    color #696969
+    font-size 16px
+    font-weight normal
+    text-align center
+    margin-bottom 17px
+
+.flex-box-vertical
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-box-pack justify
+
+#app
+  overflow hidden
+
+  #home #content
+    overflow hidden
+    overflow-y scroll
+    -webkit-overflow-scrolling touch
+    -webkit-box-flex 1
+
+#drill_down
+  width 100%
+  padding 6px 6px 6px 6px
+  borderBoxSizing()
+  #drill_down_button
+    borderRadius(6px)
+    backgroundGradient(#fff, #eee)
+    width 100%
+    height 30px
+    color #666
+    line-height 30px
+    padding-left 10px
+    img
+      float right
+      padding 10px 10px 0
+    div
+      ellipsisOverflow()
+
+#related_list_container
+  background-color #fff
+  position absolute
+  trbl(0px, 0px, 0px, 10px)
+  boxShadow(-10px 0px 20px rgb(22, 30, 30))
+  border-left 1px solid #161E1E
+
+.tableListUp
+  backgroundGradient(#f2f2f2, #f2f2f2)
+
+.tableListPressed
+  backgroundGradient(#fff, #fff)
+
+#tableList
+  boxShadow(0px 0px 4px rgba(0, 0, 0, .63))
+  li:first-child
+    border-top-left-radius 3px 3px
+    border-top-right-radius 3px 3px
+  li:last-child
+    border-bottom-left-radius 3px 3px
+    border-bottom-right-radius 3px 3px
+  li
+    text-align left
+    list-style-type none
+    font-size 14px
+    color #33393d
+    font-weight bold
+    height 40px
+    width 100%
+    background-color #F2F2F2
+    border-bottom solid #d4d4d4 1px
+  div
+    line-height 9px
+    padding: 15px 5px 10px 15px
+    ellipsisOverflow()
+  img
+    float right
+    padding 15px 10px 0
+
+.relatedListUp
+  background-color #F2F2F2
+
+.relatedListPressed
+  background-color #FFF
+
+#related_list
+  width 100%
+  li
+    list-style-type none
+    font-size 15px
+    font-weight normal
+    height 40px
+    width 100%
+    border-bottom solid #d4d4d4 1px
+    display block
+    div
+      color #33393d
+      padding 0px 10px 0px 14px
+      height 38px
+      line-height 38px
+      ellipsisOverflow()
+    img
+      float right
+      padding-right 10px
+      padding-top 15px
+
+#list
+  li
+    list-style-type none
+    font-size 15px
+    height 20px
+    border-bottom solid #25272A 1px
+    display block
+    ellipsisOverflow()
+    padding 15px 10px
+    span
+      font bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif
+      color #d7dee9
+      text-shadow 0px 1px 1px #000
+
+#searchResultList
+  li
+    list-style-type none
+    font-size 15px
+    height 30px
+    border-bottom solid #25272A 1px
+    display block
+    ellipsisOverflow()
+    padding 10px 10px
+    span
+      font bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif
+      color #d7dee9
+      text-shadow 0px 1px 1px #000
+    .brackets
+      color #9ea6b1
+      font-weight normal
+      font-size 13px
+      display block
+      margin-top -4px
+
+.listUp
+  border-top solid #5b6167 1px
+  backgroundGradient(#3f454d, #3f454d)
+
+.listPressed
+  backgroundGradient(#016DBF, #2EADEC)
+  /*boxShadow(inset 0px 1px 0px 10px rgba(0, 0, 0, .38))*/
+
+#mainNav
+  display table
+  width 100%
+  li
+    text-align center
+    display table-cell
+    height 42px
+    background url("images/nav/navbg.png")
+    img
+      padding-top 8px
+
+#types
+  border-top solid #1c1c1e 1px
+  ul
+    displayBox()
+    border-bottom solid #0B0C0D 1px
+    
+    backgroundGradient(#424549, #25272B)
+    /*boxShadow(inset 0px 1px 27px 7px rgba(0, 0, 0, .8))*/
+  li
+    boxFlex(1)
+    text-align center
+    height 22px
+    margin 4px
+    padding-top 9px
+    font-size 12px
+    font-weight bold
+    text-shadow 0px 1px 2px rgba(0, 0, 0, .7)
+
+.selectedType
+  /* 292C30 85% | 232529 100%*/
+  backgroundGradient(#272c30, #272c30)
+  borderRadius(5px)
+  -webkit-box-shadow 0px 1px 1px rgba(255,255,255,.5), rgba(0,0,0,.8) 0px 1px 35px inset
+
+.unselectedType
+  /*backgroundGradient(#424549, #25272B)
+   2A2E33 15% | 1D1F23 100%*/
+
+.detail
+  position absolute
+  trbl(0px, 0px, 0px, 5px)
+  boxShadow(-10px 0px 20px rgb(22, 30, 30))
+  border-left 1px solid #161E1E
+  background-color #414E59
+
+  .scroller
+    width 100%
+    min-height 100%
+    padding 0
+
+  #detailPending
+    position absolute
+    width 80px
+    height 80px
+    right 0px
+    top 0px
+
+  #detailHeader
+    display block
+    height 70px
+    padding-top 11px
+    padding-left 20px
+    border-bottom 1px solid #000
+    backgroundGradient(#2A333A, #1B1F24)
+
+  #detailContent
+    width 100%
+    overflow hidden
+
+  #detailAction
+
+    ul
+      displayBox()
+    ul:last-child
+      border-bottom solid #20262d 1px
+
+    li
+      img
+        display block
+        margin 0 auto
+        padding-bottom 5px
+      font-size 12px
+      padding-top 29px
+      text-align center
+      list-style-type none
+      color #D7DEE9
+      height 77.66px
+      width 106.66px
+      text-align center
+      text-shadow 1px 1px 0px #2A3036
+      boxFlex(1)
+
+#glare
+  position absolute
+  width 100%
+  height 82px
+
+.actionUp
+  background-image -webkit-gradient(linear,left top,right bottom,from(#77818C),to(#4C5562))
+
+.actionPressed
+  backgroundGradient(#4ebef2, #0088d1)
+
+.action1
+  border-right solid #384556 1px
+  border-bottom solid #384556 1px
+
+.action2
+  border-left solid #7F8892 1px
+  border-right solid #384556 1px
+  border-bottom solid #384556 1px
+
+.action3
+  border-left solid #7F8892 1px
+  border-bottom solid #384556 1px
+
+.action4
+  border-top solid #7D858F 1px
+  border-right solid #384556 1px
+  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+
+.action5
+  border-top solid #7D858F 1px
+  border-left solid #818893 1px
+  border-right solid #384556 1px
+  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+
+.action6
+  border-top solid #7D858F 1px
+  border-left solid #818893 1px
+  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+
+.checkIn
+  background: url(images/actions/checkIn.png)
+
+.followUp
+  background url(images/actions/followUp.png)
+
+.takeNote
+  background url(images/actions/takeNote.png)
+
+.call
+  background url(images/actions/call.png)
+
+.email
+  background url(images/actions/email.png)
+
+.map
+  background url(images/actions/map.png)
+
+.web
+  background url(images/actions/web.png)
+
+#typeIndicator
+  position absolute
+  width 35px
+  height 35px
+  
+#typeAccount
+  @extends #typeIndicator
+  background-image url(images/001.png)
+
+#typeContact
+  @extends #typeIndicator
+  background-image url(images/003.png)
+
+#typeOpportunity
+  @extends #typeIndicator
+  background-image url(images/006.png)
+
+#typeLead
+  @extends #typeIndicator
+  background-image url(images/00Q.png)
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5)
+
+  body
+    background: url("images/bg@2x.png") repeat;
+
+  #typeAccount
+    @extends #typeIndicator
+    background-image url(images/001@2x.png)
+    background-size 35px 35px
+
+  #typeContact
+    @extends #typeIndicator
+    background-image url(images/003@2x.png)
+    background-size 35px 35px
+
+  .checkIn
+    background-image url(images/actions/checkIn@2x.png)
+    background-size 37px 37px
+  .followUp
+    background-image url(images/actions/followUp@2x.png)
+    background-size 37px 37px
+  .takeNote
+    background-image url(images/actions/takeNote@2x.png)
+    background-size 37px 37px
+  .call
+    background-image url(images/actions/call@2x.png)
+    background-size 37px 37px
+  .email
+    background-image url(images/actions/email@2x.png)
+    background-size 37px 37px
+  .map
+    background-image url(images/actions/map@2x.png)
+    background-size 37px 37px
+  .web
+    background-image url(images/actions/web@2x.png)
+    background-size 37px 37px
+
+.detailName
+  color #FFF
+  text-shadow 0px 1px 3px #000
+  font-weight bold
+  font-size 24px
+  margin-right 60px
+  margin-bottom -3px
+  ellipsisOverflow()
+
+.detailTitle
+  line-height 17px
+  color #8B97A6
+  text-shadow 0px 1px 1px #000
+  font-weight normal
+  font-size 14px
+  margin-right 10px
+  ellipsisOverflow()
+
+
+#formBG
+  border-color #a2a2a2
+  boxShadow(inset 0px 1px 3px 0px rgba(0, 0, 0, .4))
+  background-color #F2F2F2
+  font-size 16px
+
+
+form
+  select
+    width 100%
+    height 30px
+    border-color #999
+    margin-top 2px
+    margin-bottom 2px
+    color #484848
+    background-color #EDEDED
+    font-size 16px
+  .input
+    color #484848
+    outline none
+    width 100%
+    borderBoxSizing()
+    @extends #formBG
+  input[type="date"]
+    color #484848
+    border-color #a2a2a2
+    boxShadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
+    background-color #F2F2F2
+    width 50%
+    -webkit-appearance none
+    margin-top 2px
+    margin-bottom 4px
+    height 22px
+    font-size 16px
+    label
+      font-size 12px
+  textarea
+    @extends #formBG
+    color #484848
+    height 7em
+    outline none
+    width 100%
+    borderBoxSizing()
+
+#editForm
+  input[type="date"]
+    color #484848
+    border-color #a2a2a2
+    boxShadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
+    background-color #F2F2F2
+    width 100%
+    -webkit-appearance none
+    margin-top 2px
+    margin-bottom 4px
+    height 30px
+    font-size 16px
+    borderBoxSizing()
+
+label
+  color #666666
+
+label#error
+    color red
+
+.formToggle
+  color #666
+  font-weight bold
+  font-size 11px
+  white-space nowrap
+  text-align right
+
+  span:first-child
+    padding-right 5px
+
+  span
+    display inline-block
+    vertical-align middle
+
+  .toggleLabel
+    padding-top 7px
+
+.lockActive
+  background url("images/lock_active.png")
+.lockInactive
+  background url("images/lock_inactive.png")
+@media all and (-webkit-min-device-pixel-ratio: 1.5)
+  .lockActive
+    background-image url(images/lock_active@2x.png)
+    background-size 27px 27px
+  .lockInactive
+    background-image url(images/lock_inactive@2x.png)
+    background-size 27px 27px
+
+#cancel
+  width 49%
+#submit
+  width 49%
+  float right
+
+#searchHeader
+  padding 6px 5px 6px 5px
+  boxShadow(inset 0px 2px 2px 0px rgba(0, 0, 0, .4))
+  backgroundGradient(#4c535c, #1f2225)
+  border-bottom solid #000 1px
+
+  #xDiv
+    position relative
+  #x
+    position absolute
+    top -26px
+    right 10px
+
+#start
+  position absolute
+  left 10px
+  right 10px
+  top 10px
+  border 10px
+  height 90%
+  text-align center
+  backgroundGradient(#4e5866, #495461)
+  boxShadow(0px, 0px, 8px, #000)
+  border-radius(15px)
+
+.button
+  color #ffffff
+  font bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif
+  padding 6px 24px
+  text-decoration none
+  display inline-block
+  borderRadius(2px)
+
+#logoutButton, #feedbackButton, #logsButton, #aboutButton, #eulaButton
+  width 100%
+
+#callList
+  #cancel, #submit
+    width 100%
+
+.signinButton
+  width 145px
+  boxShadow(inset 0px 1px 0px 0px #87d3f9)
+  backgroundGradient(#00a1f2, #0172aa)
+  borderRadius(6px)
+  border 1px solid #1c254a
+  text-shadow 1px 1px 0px #114ea4
+
+.modalButton
+  width 145px
+  boxShadow(inset 0px 1px 0px 0px #87d3f9)
+  backgroundGradient(#00A8D3, #005a99)
+  borderRadius(6px)
+  border 1px solid #134156
+  text-shadow 1px 1px 0px #114ea4
+
+.actionBaseButton
+  backgroundGradient(#979C9E, #4E575B)
+  font-weight normal
+.actionButton
+  @extends .actionBaseButton
+  -webkit-box-shadow 0px 1px 2px rgba(0, 0, 0, .25), #b7bbbc 0px 1px 0px 0px inset
+  border 1px solid #292a2b
+  text-shadow 0px -1px 0px #292a2b
+.actionButtonDown
+  @extends .actionBaseButton
+  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  border 1px solid #787d80
+  text-shadow 0px -1px 1px rgba(0,0,0,.3)
+
+.cancelBaseButton
+  text-shadow 0px -1px 1px rgba(0,0,0,.3)
+  backgroundGradient(#B9BCBE, #868C8F)
+.cancelButton
+  @extends .cancelBaseButton
+  -webkit-box-shadow 0px 1px 2px rgba(0,0,0,.4), #DEDFE0 0px 1px 0px 0px inset
+  border 1px solid #6F7476
+.cancelButtonDown
+  @extends .cancelBaseButton
+  border 1px solid #787d80
+  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  
+.submitBaseButton
+  backgroundGradient(#96D400, #509900)
+  text-shadow 0px -1px 0px #639600
+.submitButton
+  @extends .submitBaseButton
+  -webkit-box-shadow 0px 1px 2px rgba(0,0,0,.4), #D0EA87 0px 1px 0px 0px inset
+  border 1px solid #57771D
+.submitButtonDown
+  @extends .submitBaseButton
+  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  border 1px solid #52711b
+.submitButtonDisabled
+  boxShadow(inset 0px 1px 0px 0px #DEDFE0)
+  backgroundGradient(#DBDCDD, #C2C5C7)
+  border 1px solid #888B8D
+  text-shadow 0px -1px 0px #828688
+
+.cancelDialog
+  boxShadow(inset 0px 1px 0px 0px #DEDFE0)
+  backgroundGradient(#B9BCBE, #868C8F)
+  border 1px solid #141415
+  text-shadow 0px -1px 0px #828688
+  borderRadius(2px)
+
+.submitDialog
+  boxShadow(inset 0px 1px 0px 0px #D0EA87)
+  backgroundGradient(#96D400, #509900)
+  border 1px solid #28370c
+  text-shadow 0px -1px 0px #639600
+  borderRadius(2px)
+
+#dialog
+  position absolute
+  top 140px
+  left 10px
+  right 10px
+  background-color #4d5153
+  border 1px solid #000
+  boxShadow(0px 1px 5px 0px rgba(0, 0, 0, .25))
+  borderRadius(5px)
+
+  header
+    text-align center
+    background-image -webkit-gradient(linear, 0% 0%, 0% 100%, from(#454748), to(#000), color-stop(.41, #181920), color-stop(.58, #181920), color-stop(.97, #444647), color-stop(.98, #616364))
+    boxShadow(inset 0px 1px 0px 0px rgba(255, 255, 255, .19))
+    padding-top 12px
+    padding-left 10px
+    padding-bottom 12px
+    border-top-left-radius 5px 5px
+    border-top-right-radius 5px 5px
+    label
+      color #fff
+      font-size 16px
+      font-weight bold
+  article
+    boxShadow(inset 0px 0px 42px 0px #333639)
+    color #fff
+    padding-left 10px
+    padding-right 10px
+    padding-top 20px
+    padding-bottom 20px
+    font-size 15px
+  footer
+    boxShadow(inset 0px 0px 42px 0px #333639)
+    padding-left 10px
+    padding-right 10px
+    padding-bottom 10px
+
+.modal
+  background-color white
+  position absolute
+  trbl(0,0,0,0)
+
+  .header
+    background url("images/nav/navbg.png")
+    height 42px
+    text-align center
+    border-bottom solid #1C1C1E 1px
+
+    .title
+      line-height 42px
+      font-size 18px
+      font-weight bold
+      color #fff
+      text-shadow 0px 1px 1px rgba(0, 0, 0, .3)
+
+    #closeButton
+      position absolute
+      margin 5px
+      min-width 60px
+      width auto
+      padding 6px 10px
+      right 0
+
+  .content
+    color black
+    overflow hidden
+    position absolute
+    trbl(42px, 0, 0, 0)
+
+    .scroller
+      padding 15px
+
+#bccContainer
+  borderRadius 3px
+  background-color #fff
+  borderBoxSizing()
+  padding 10px
+  width 100%
+  text-align left
+  margin-top 6px
+  label
+    color #FFF
+    font-weight bold
+    font-size 16px
+    line-height 30px
+    vertical-align top
+  input
+    width 100%
+    height 30px
+    font-size 16px
+    borderBoxSizing()
+  .hint
+    font-size 11px
+    color #999
+
+#bccEmailHelp
+  margin-left 10px
+
+#settings
+  padding 6px
+  border-top solid #1c1d1e 1px
+  center
+    padding-top 6px
+  #tableList
+    margin-top 6px
+.settingsTitle
+  font-size 15px
+  font-weight bold
+  color #fff
+.settingsLabel
+  font-size 15px
+  color #fff
+.settingsToggleOn
+  color #3d61a3
+.settingsToggleOff
+  color #33393d
+
+#chatterPost, #privateNote
+  border solid #c4c2c2 2px
+  border-style solid
+  borderRadius 3px
+  background-color #f2f2f2
+  text-align left
+  padding-left 12px
+  font-size 14px
+  color #afb1b2
+  height 36px
+  padding-top 6px
+  padding-right 7px
+
+.toggle {
+  display inline-block
+  float right
+  position: relative;
+  width: 75px;
+  height: 28px;
+  background-color: #c2c2c2;
+  border: 1px solid #777c80;
+  border-radius: 20px;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+/* Text indicating "on" or "off". Default is "off" */
+.toggle:before {
+  position: absolute;
+  right: 13px;
+  font-weight: bold;
+  line-height: 28px;
+  color: #fff;
+  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  content: "Off";
+  font-size: 16px;
+}
+
+/* Sliding handle */
+.toggle-handle {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  background-image: -webkit-linear-gradient(top, #d0d0d0 0, #fcfcfc 100%);
+  background-image: linear-gradient(to bottom, #d0d0d0 0, #fcfcfc 100%);
+  -webkit-box-shadow 2px 0px 2px rgba(0,0,0,.2), rgba(255,255,255,.75) 0px 0px 4px inset
+  border: 1px solid #636363;
+  border-radius: 100px;
+  -webkit-transition: -webkit-transform 0.1s ease-in-out, border 0.1s ease-in-out;
+                  transition: transform 0.1s ease-in-out, border 0.1s ease-in-out;
+}
+
+/* Active state for toggle */
+.toggle.active {
+  background-color: #19a8e4;
+  background-image: -webkit-linear-gradient(top, #60aad5 0, #5394b9 100%);
+  background-image: linear-gradient(to bottom, #60aad5 0, #5394b9 100%);
+  border: 1px solid #2e5c76;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+/* Active state for toggle handle */
+.toggle.active .toggle-handle {
+  border: 1px solid #2d5165;
+  background-image: -webkit-linear-gradient(top, #d0d0d0 0, #fcfcfc 100%);
+  background-image: linear-gradient(to bottom, #d0d0d0 0, #fcfcfc 100%);
+  -webkit-box-shadow -2px 0px 2px rgba(0,0,0,.2), rgba(255,255,255,.75) 0px 0px 4px inset
+  -webkit-transform: translate3d(48px,0,0);
+          transform: translate3d(48px,0,0);
+}
+
+/* Change "off" to "on" for active state */
+.toggle.active:before {
+  right: auto;
+  left: 15px;
+  color: #fff;
+  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.35);
+  content: "On";
+  font-weight: bold;
+  font-size: 16px;
+}

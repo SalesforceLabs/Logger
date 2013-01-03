@@ -1,0 +1,7 @@
+<div id="callList" class="actionForm">
+  <h1>{{choose_a_number}}</h1>
+  {{#list}}
+    <button id="submit" value="{{number}}" class="button actionButton">{{name}}</button>
+  {{/list}}
+  <button id="cancel" type="button" class="button cancelButton">{{cancel}}</button>
+</div>

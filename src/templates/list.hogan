@@ -1,0 +1,23 @@
+<nav id="types">
+  <ul>
+    {{#showContacts}}<li id="Contacts">{{contactsLabel}}</li>{{/showContacts}}
+    {{#showAccounts}}<li id="Accounts">{{accountsLabel}}</li>{{/showAccounts}}
+    {{#showOpportunities}}<li id="Opportunities">{{opportunitiesLabel}}</li>{{/showOpportunities}}
+    {{#showLeads}}<li id="Leads">{{leadsLabel}}</li>{{/showLeads}}
+  </ul>
+</nav>
+
+<ul id="list">
+  {{#list}}
+    <li id="{{Id}}" class="listUp">
+      <span>{{uiName}}</span>
+    </li>
+  {{/list}}
+</ul>
+
+{{#isEmpty}}
+<div class="message">
+<br/>
+<a href="" id="searchRecord">{{search}}</a>.
+</div>
+{{/isEmpty}}
