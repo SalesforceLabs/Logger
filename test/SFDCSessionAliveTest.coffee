@@ -4,10 +4,14 @@ SFDC = require '../src/coffeescripts/SFDC'
 
 describe 'SFDC', ->
 
+  defaultWait = SFDC._MIN_WAIT_TIME
+
   before () ->
+    SFDC._MIN_WAIT_TIME = 10
     SFDC.allowRequestQueueing = true
 
   after () ->
+    SFDC._MIN_WAIT_TIME = defaultWait
     SFDC.allowRequestQueueing = false
 
   describe '#ajax()', ->
@@ -47,8 +51,6 @@ describe 'SFDC', ->
       SFDC.requestQueue.should.have.length 0
 
     it 'ajax should retry in 2.5sec on status 0 error and fail after', (done) ->
-      @timeout(3000)
-
       startTime = new Date().valueOf()
       $.ajax = (jqXHR) -> 
         jqXHR.status = 0
@@ -59,7 +61,7 @@ describe 'SFDC', ->
       SFDC.ajax '/', 'GET', {}, (err, res) ->
         err.should.not.be.null
         SFDC.requestQueue.should.have.length 0
-        (new Date().valueOf() - startTime).should.be.within(2400, 3000)
+        (new Date().valueOf() - startTime).should.be.above(1)
         done()
 
       SFDC.requestQueue.should.have.length 0

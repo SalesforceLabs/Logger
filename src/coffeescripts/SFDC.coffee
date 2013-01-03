@@ -32,8 +32,11 @@ class SFDC
   # Lead Constant
   @LEAD = 'Lead'
 
-  # Treshold in ms when an ajax call is considered to be timed out.
+  # Threshold in ms when an ajax call is considered to be timed out.
   @_TIMEOUT_THRESHOLD = 20000
+
+  # Min time in ms to wait before retrying a request.
+  @_MIN_WAIT_TIME = 2500
 
   # SFDC API Version
   @apiVersion = '24.0'
@@ -298,9 +301,9 @@ class SFDC
         # check if it was a retry with same previous error
         if jqXHR.status is failOnError
           callback jqXHR, null
-        # else if request just failed to connect to network, try again in 2500ms
+        # else if request just failed to connect to network, try again in @_MIN_WAIT_TIME
         else if jqXHR.status is 0
-          setTimeout retryFn(0), 2500
+          setTimeout retryFn(0), SFDC._MIN_WAIT_TIME
         # else if request failed due to Unauthorized error, enqueue request for future
         else if jqXHR.status is 401
           if SFDC.allowRequestQueueing
