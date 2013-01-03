@@ -7,6 +7,11 @@ Follow on [Twitter](https://twitter.com/saleslogger).
 
 ## Setup
 
+Fetch all the related git project dependencies for development
+    
+    $ git submodule init
+    $ git submodule update --init --recursive
+
 In order to build Logger you need [NodeJS](http://nodejs.org) version >=0.8 and [CoffeeScript](http://coffeescript.org). All other dependencies are install with NPM:
 
     $ sudo npm install -g coffee-script
@@ -55,10 +60,9 @@ Open `xcode/Logger.xcodeproj` with XCode. Select your device or the simulator an
     $ make android
 
 Open Eclipse and
-- Import the `android` project.  
-- Import the [Salesforce Mobile SDK Android](https://github.com/forcedotcom/SalesforceMobileSDK-Android) `SalesforceMobileSDK-Android/native/SalesforceSDK`
-- Open Logger project settings, switch to Android and add the Mobile SDK as a library
-- Clean project
+- Go to File -> Import and select General -> Existing Projects into Workspace.
+- Import the `$LOGGER_HOME/android/external/SalesforceMobileSDK/native/SalesforceSDK` project from [Salesforce Mobile SDK Android](https://github.com/forcedotcom/SalesforceMobileSDK-Android)
+- Similarly, select the folder `$LOGGER_HOME/android` and import project `Logger` into the workspace.
 - Right-click Loggr in the Project Explorer and select _Debug As_ -> _Android Application_.
 
 Whenever you change source code you only have to switch to Eclipse, select the project, hit F5 and re-run the app. When you are done developing kill the `make android` process.
