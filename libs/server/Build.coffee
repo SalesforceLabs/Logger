@@ -79,8 +79,12 @@ class Build
           newFile = fs.createWriteStream destFile
           util.pump oldFile, newFile
     catch e
-      content = fs.readFileSync src
-      fs.writeFileSync dest, content, "utf8"
+      try
+        content = fs.readFileSync src
+        fs.writeFileSync dest, content, "utf8"
+      catch e2
+        console.log "Error: #{e2}"
+
 
   ###
   @param cfg Config with src, destination and namespace
