@@ -61,17 +61,20 @@ class Build
       fs.readdirSync(src).forEach (file) ->
         stat = fs.statSync src + "/" + file
         if stat.isDirectory()
+          if not path.existsSync(dest)
+            fs.mkdir dest, '0777'
           destDir = dest + "/" + file
-          if not fs.existsSync(destDir)
+          if not path.existsSync(destDir)
+            console.log '\ncreate dir ' + destDir + '\n'
             fs.mkdir destDir, '0777'
 
-          copy src + "/" + file, destDir
+          Build.copy src + "/" + file, destDir
         else
-          if not fs.existsSync(dest)
+          if not path.existsSync(dest)
             fs.mkdir dest, '0777'
           srcFile = src + '/' + file
           destFile = dest + '/' + file
-          #util.log 'Copy file ' + srcFile + ' to ' + destFile
+          #console.log 'Copy file ' + srcFile + ' to ' + destFile
           oldFile = fs.createReadStream srcFile
           newFile = fs.createWriteStream destFile
           util.pump oldFile, newFile
