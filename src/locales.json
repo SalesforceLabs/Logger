@@ -23,6 +23,10 @@
     "en": "Saved!",
     "de": "Gespeichert!"
   },
+  "update":{
+    "en": "Update",
+    "de": "Ändern"
+  },
 
   "auth_error_alert":{
     "en": "Authentication Error ({0}). Please retry.",

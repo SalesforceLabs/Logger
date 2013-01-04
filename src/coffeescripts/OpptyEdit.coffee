@@ -17,6 +17,8 @@ class OpptyEdit extends BaseAction
   # Render template
   render: ->
     template = new Hogan.Template T.oppty_edit
+    @options.cancel = L.get("cancel")
+    @options.update = L.get("update")
     @form = $(template.render(@options))
 
     @androidNativeDatePicker()
