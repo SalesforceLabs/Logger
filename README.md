@@ -7,11 +7,6 @@ Follow on [Twitter](https://twitter.com/saleslogger).
 
 ## Setup
 
-Fetch all the related git project dependencies for development
-    
-    $ git submodule init
-    $ git submodule update --init --recursive
-
 In order to build Logger you need [NodeJS](http://nodejs.org) version >=0.8 and [CoffeeScript](http://coffeescript.org). All other dependencies are install with NPM:
 
     $ sudo npm install -g coffee-script
@@ -57,15 +52,26 @@ Open `xcode/Logger.xcodeproj` with XCode. Select your device or the simulator an
 
 ### Android
 
-    $ make android
+__Fetch all the related git project dependencies__
+    
+    $ git submodule init
+    $ git submodule update --init --recursive
 
-Open Eclipse and
+__Import projects into Eclipse__
 - Go to File -> Import and select General -> Existing Projects into Workspace.
-- Import the `$LOGGER_HOME/android/external/SalesforceMobileSDK/native/SalesforceSDK` project from [Salesforce Mobile SDK Android](https://github.com/forcedotcom/SalesforceMobileSDK-Android)
-- Similarly, select the folder `$LOGGER_HOME/android` and import project `Logger` into the workspace.
-- Right-click Loggr in the Project Explorer and select _Debug As_ -> _Android Application_.
+- Import the `<logger_dir>/android/external/SalesforceMobileSDK/native/SalesforceSDK` project from [Salesforce Mobile SDK Android](https://github.com/forcedotcom/SalesforceMobileSDK-Android)
+- Similarly, select the folder `<logger_dir>/android` and import project `Logger` into the workspace.
+
+__Build and run__
+
+    $ make android
+Right-click Logger in the Project Explorer and select _Debug As_ -> _Android Application_.
 
 Whenever you change source code you only have to switch to Eclipse, select the project, hit F5 and re-run the app. When you are done developing kill the `make android` process.
+
+__Hint__
+
+If you see error `Unable to resolve target 'android-15'` make sure you've got Android 4.0.3 (API 15) installed via the SDK manager.
 
 ### NodeJS Web App
 To test the web app you need to run Redis and NodeJS express server:
@@ -113,7 +119,14 @@ Unit tests are build on top of [Mocha](http://visionmedia.github.com/mocha/) and
 
     $ make tdd
 
-With this command all tests are executed whenever a file changes. We recommend to have [Growl](http://growl.info/) installed so you get notifications whenever tests are failing.
+## Notifications
+
+Verve notifies whenever a file has been recompiled or tests are passing/failing whenever a file is changed.
+
+For [Growl notifications support](https://github.com/visionmedia/node-growl) install growlnotify.  
+On OS X 10.8, Notification Center is supported using terminal-notifier. To install:
+
+    $ sudo gem install terminal-notifier
 
 ### Functional Tests
 

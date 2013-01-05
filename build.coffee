@@ -31,7 +31,6 @@ if client_id
   if containerAuth.indexOf("LOGGER_CLIENT_ID") isnt -1
     containerAuth = containerAuth.replace /LOGGER_CLIENT_ID/, client_id
     fs.writeFileSync containerAuthPath, containerAuth, "utf8"
-  console.log containerAuth
 else
   console.log "No OAuth Client Id found (env.LOGGER_CLIENT_ID). Please see the documentation on how to setup OAuth."
 

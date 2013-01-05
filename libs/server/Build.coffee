@@ -57,26 +57,34 @@ class Build
   ###
   @copy: (src, dest) ->
     console.log "Copy dir #{src} -> #{dest}"
-    fs.readdirSync(src).forEach (file) ->
-      stat = fs.statSync src + "/" + file
-      if stat.isDirectory()
-        if not path.existsSync(dest)
-          fs.mkdir dest, '0777'
-        destDir = dest + "/" + file
-        if not path.existsSync(destDir)
-          console.log '\ncreate dir ' + destDir + '\n'
-          fs.mkdir destDir, '0777'
+    try
+      fs.readdirSync(src).forEach (file) ->
+        stat = fs.statSync src + "/" + file
+        if stat.isDirectory()
+          if not path.existsSync(dest)
+            fs.mkdir dest, '0777'
+          destDir = dest + "/" + file
+          if not path.existsSync(destDir)
+            console.log '\ncreate dir ' + destDir + '\n'
+            fs.mkdir destDir, '0777'
 
-        Build.copy src + "/" + file, destDir
-      else
-        if not path.existsSync(dest)
-          fs.mkdir dest, '0777'
-        srcFile = src + '/' + file
-        destFile = dest + '/' + file
-        #console.log 'Copy file ' + srcFile + ' to ' + destFile
-        oldFile = fs.createReadStream srcFile
-        newFile = fs.createWriteStream destFile
-        util.pump oldFile, newFile
+          Build.copy src + "/" + file, destDir
+        else
+          if not path.existsSync(dest)
+            fs.mkdir dest, '0777'
+          srcFile = src + '/' + file
+          destFile = dest + '/' + file
+          #console.log 'Copy file ' + srcFile + ' to ' + destFile
+          oldFile = fs.createReadStream srcFile
+          newFile = fs.createWriteStream destFile
+          util.pump oldFile, newFile
+    catch e
+      try
+        content = fs.readFileSync src
+        fs.writeFileSync dest, content, "utf8"
+      catch e2
+        console.log "Error: #{e2}"
+
 
   ###
   @param cfg Config with src, destination and namespace
