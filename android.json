@@ -38,6 +38,7 @@
     "namespace": "T"
   },
   "assets": [
-    {"source":"./src/images", "destination": "./android/assets/www/images"}
+    {"source":"./src/images", "destination": "./android/assets/www/images"},
+    {"source":"./src/locales.json", "destination": "./android/assets/www/locales.json", "watch": true}
   ]
 }
