@@ -65,9 +65,7 @@ class Main
     
     # Check EULA
     @checkEULA => 
-      # Start launch process
-      @launch()
-      # Add online event listener to re-initiate launch process when we come back offline
+      # Add online event listener to re-initiate launch process when we are online
       $(document).on 'online', => @launch() if not @isLaunchComplete
 
 
