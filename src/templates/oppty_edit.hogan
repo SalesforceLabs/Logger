@@ -14,5 +14,5 @@
   {{/showStageName}}
   <br/><br/>
   <button id="cancel" type="button" class="button cancelButton">{{cancel}}</button>
-  <button id="submit" type="button" class="button submitButtonDisabled">{{update}}}</button>
+  <button id="submit" type="button" class="button submitButtonDisabled">{{update}}</button>
 </form>
