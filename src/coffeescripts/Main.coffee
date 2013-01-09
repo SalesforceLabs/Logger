@@ -64,7 +64,8 @@ class Main
       @showHash "#detail?id=#{id}"
     
     # Check EULA
-    @checkEULA => 
+    @checkEULA =>
+      @launch()
       # Add online event listener to re-initiate launch process when we are online
       $(document).on 'online', => @launch() if not @isLaunchComplete
 
