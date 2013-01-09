@@ -58,9 +58,9 @@ class BaseAction extends EventDispatcher
   # have focus right away.
   androidDelay: ->
     if Platform.isAndroid()
-      disableFields true
-      setTimeout ->
-        disableFields false
+      @disableFields true
+      setTimeout =>
+        @disableFields false
       , 1000
 
   # Since some Android version don't have an HTML5 date picker
