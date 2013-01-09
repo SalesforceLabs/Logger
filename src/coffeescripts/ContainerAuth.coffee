@@ -62,7 +62,7 @@ class ContainerAuth
           LoggrUtil.log('Failed to login user: ' + JSON.stringify err)
           isAuthenticating = false
           errStr = JSON.stringify err
-          alert L.get("auth_error_alert")
+          alert L.get("auth_error_alert", errStr)
           ContainerAuth.authenticate callback
         , oauthProperties
 
