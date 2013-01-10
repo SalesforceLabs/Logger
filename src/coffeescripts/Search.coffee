@@ -89,7 +89,7 @@ class Search extends EventDispatcher
           else
             # Escape searchTerm to prevent XSS
             searchTerm = LoggrUtil.htmlEncode searchTerm
-            displayError L.get("no_search_matches")
+            displayError L.get("no_search_matches", searchTerm)
 
 
   # _private_ function to render the search result
