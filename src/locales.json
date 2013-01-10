@@ -291,8 +291,8 @@
     "de": "Sind Sie sicher, dass Sie sich abmelden wollen?"
   },
   "post_on_chatter":{
-    "en": "Post on Chatter.",
-    "de": "Auf Chatter teilen."
+    "en": "Post on Chatter",
+    "de": "Auf Chatter teilen"
   },
   "viral_chatter_post":{
     "en": "I'm using Logger from Salesforce Labs to log activity in seconds, check-in, take notes and more. You can download it here: iOS - http://bit.ly/LoggeriOS  Android - http://bit.ly/LoggerAndroid",

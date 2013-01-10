@@ -14,10 +14,10 @@ class Settings
   # Opens the dialog to post a viral post to Chatter
   @viralChatterPost: ->
     LoggrUtil.log "viralChatterPost"
+    viralPost = L.get("viral_chatter_post")
     Dialog.show L.get("post_on_chatter"), viralPost, "Share", ->
       LoggrUtil.tagEvent 'settingsAction', {type:"Share on Chatter"}
       UI.showPending L.get("saving")
-      viralPost = L.get("viral_chatter_post")
       SFDC.chatter "news/me", viralPost, (err, result) ->
         UI.hidePending(true, L.get("thanks"))
 
