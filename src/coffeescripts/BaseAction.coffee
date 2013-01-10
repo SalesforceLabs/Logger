@@ -65,7 +65,8 @@ class BaseAction extends EventDispatcher
 
   # Since some Android version don't have an HTML5 date picker
   # use Cordova plugin fallback.
-  androidNativeDatePicker: ->
+  # `callback` Callback function (date) invoked when date is set
+  androidNativeDatePicker: (callback) ->
     if Platform.isAndroid() and not Modernizr?.inputtypes.date
       LoggrUtil.log "Android native date picker"
       @form.find('.nativedatepicker').focus (event) ->
@@ -81,6 +82,8 @@ class BaseAction extends EventDispatcher
             newDate = new Date(returnDate)
             dateAsString = LoggrUtil.getISODate newDate
             currentField.val dateAsString
+            LoggrUtil.log "set new date #{dateAsString}"
+            callback newDate
             # This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
             currentField.blur()
 

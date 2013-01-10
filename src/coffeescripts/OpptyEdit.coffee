@@ -21,12 +21,17 @@ class OpptyEdit extends BaseAction
     @options.update = L.get("update")
     @form = $(template.render(@options))
 
-    @androidNativeDatePicker()
-    @androidDelay()
 
     formValid = false
 
+    @androidDelay()
+
     if @options.showCloseDate
+      @androidNativeDatePicker (date) =>
+        if not formValid
+          formValid = true
+          @form.find('#submit').toggleClass('submitButton submitButtonDisabled')
+      
       $closeDate = @form.find '#closeDate'
       $closeDate.bind 'keyup input paste', (event) =>
         closeDate = $closeDate.attr 'value'
