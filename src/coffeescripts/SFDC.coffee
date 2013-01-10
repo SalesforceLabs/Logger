@@ -33,7 +33,7 @@ class SFDC
   @LEAD = 'Lead'
 
   # Threshold in ms when an ajax call is considered to be timed out.
-  @_TIMEOUT_THRESHOLD = 20000
+  @_TIMEOUT_THRESHOLD = 30000
 
   # Min time in ms to wait before retrying a request.
   @_MIN_WAIT_TIME = 2500
