@@ -100,7 +100,7 @@ class Task extends BaseAction
     
     # Listen for changes to the subject to disable the submit button when empty
     if @options.doShowSubject
-      @form.find('#subject').bind 'keyup', (event) ->
+      @form.find('#subject').bind 'keyup', (event) =>
         tempSubject = @form.find('#subject').attr('value')
         #LoggrUtil.log 'temp subject ' + tempSubject
         if tempSubject.trim().length is 0 and formValid
