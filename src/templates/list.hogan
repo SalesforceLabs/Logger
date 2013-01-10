@@ -17,7 +17,8 @@
 
 {{#isEmpty}}
 <div class="message">
-<br/>
+{{no_recently_viewed}}
+<br/><br/>
 <a href="" id="searchRecord">{{search}}</a>.
 </div>
 {{/isEmpty}}
