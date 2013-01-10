@@ -34,7 +34,7 @@ class Call extends BaseAction
 
     if Config.isFieldVisible(object, "MobilePhone")
       if @json.MobilePhone
-        list.push {name: L.get("mobile", @json.MobilePhone), number:@json.MobilePhone}
+        list.push {name: L.get("mobile_", @json.MobilePhone), number:@json.MobilePhone}
       else
         list.push {name:L.get("mobile+"), number:""}
 

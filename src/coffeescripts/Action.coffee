@@ -184,13 +184,13 @@ class Action extends EventDispatcher
       if action
         switch action
           when "call", "log"
-            options = Task.getPayload 'call', @json
+            options = Task.getPayload 'call', json
             @createTask json, options
               
             Platform.call data if action is "call"
 
           when "edit"
-            @edit Edit.PHONE, @json, =>
+            @edit Edit.PHONE, json, =>
               @close()
               setTimeout =>
                 # re-open call sheet

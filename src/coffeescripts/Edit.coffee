@@ -23,7 +23,9 @@ class Edit extends BaseAction
   # `json` Record object  
   # `callback` Optional callback function to handle the result (data)
   constructor: (@type, @json, @callback) ->
-    LoggrUtil.log "new Edit #{@type} " + JSON.stringify(@json)
+    LoggrUtil.log "new Edit #{@type}"
+    if not @json
+      throw new Error "JSON for edit not set: #{@json}"
 
     switch @type
       when Edit.PHONE
