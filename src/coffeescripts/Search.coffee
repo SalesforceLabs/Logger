@@ -139,7 +139,7 @@ class Search extends EventDispatcher
     $('#searchForm').bind 'submit', @_executeSearch
     $search = $("#search")
     $x = $('#x')
-    $x.hammer(UI.buttonHammerOptions).on "tap", ->
+    $x.hammer(UI.buttonHammerOptions).on "tap", =>
       $x.hide()
       @_cachedResult.searchTerm = null
       $search.attr 'value', ""
