@@ -57,8 +57,8 @@ class Model
   @addAccountName: (item) ->
     type = LoggrUtil.getType(item.Id)
     if type is SFDC.CONTACT or type is SFDC.OPPORTUNITY
-      # this is no boolean expression but an intended assignment
-      if accountName = Model._accountNames[item.AccountId]
+      accountName = Model._accountNames[item.AccountId]
+      if accountName
         item.accountName = accountName
     return item
 

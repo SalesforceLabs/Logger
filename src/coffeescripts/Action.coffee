@@ -44,7 +44,10 @@ class Action extends EventDispatcher
 
     @detailContent = $detailContent
 
-    Panel.draggingEnabled = false
+    # Don't disable dragging for map action
+    # No form will be shown
+    if actionId isnt 'map'
+      Panel.draggingEnabled = false
 
     switch actionId
       when 'checkIn'
@@ -96,11 +99,9 @@ class Action extends EventDispatcher
         else
           @edit Edit.EMAIL, json
       when 'map'
-        # this is an intended assignment and
-        # not a boolean expression
-        if query = Model.getGeoQuery json
+        query = Model.getGeoQuery json
+        if query
           Platform.maps query
-          @close()
         else
           @edit Edit.ADDRESS, json
       else
