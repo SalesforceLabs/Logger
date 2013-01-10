@@ -58,6 +58,11 @@
     "de": "Keine kürzlich angesehenen Einträge gefunden."
   },
 
+  "close_detail_label":{
+    "en": "Close: {0}",
+    "de": "Close: {0}"
+  },
+
   "check-in":{
     "en": "Check-In",
     "de": "Check-In"

@@ -114,10 +114,9 @@ class Detail extends EventDispatcher
   refreshOpptyHeader: (json) ->
     opptyDetails = ""
     if json.CloseDate
-      date = new Date(json.CloseDate)
-      # Date day is 0 indexed so add 1
-      date.setDate(date.getDate() + 1)
-      opptyDetails += "Close: " + date.toLocaleDateString()
+      date = new Date()
+      date.setTime Date.parse(json.CloseDate)
+      opptyDetails += L.get("close_detail_label", date.toLocaleDateString())
     if json.CloseDate and json.StageName
       opptyDetails += " - "
     opptyDetails += json.StageName if json.StageName
