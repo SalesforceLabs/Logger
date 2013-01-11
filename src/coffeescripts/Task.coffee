@@ -62,7 +62,6 @@ class Task extends BaseAction
       subject_placeholder: L.get("subject_placeholder")
 
     
-    #partial.chatterClass = if isChatter then "chatterActive" else "chatterInactive"
     @form = $(task.render(partial))
 
     @androidNativeDatePicker()
@@ -71,7 +70,7 @@ class Task extends BaseAction
     if @isChatterEnabled()
 
       # Post to chatter is true by default
-      isChatter = @options.chatterDefault and @isChatterEnabled()
+      isChatter = @options.chatterDefault
 
       $chatter = @form.find('#chatter')
       # Chatter is sticky so try to restore the last state
@@ -82,8 +81,8 @@ class Task extends BaseAction
           $chatter.toggleClass("active")
         else if val is "false"
           isChatter = false
-        else
-          Platform.setProperty "chatter_#{@options.id}", if @options.chatterDefault then "true" else "false"
+        else if @options.chatterDefault
+          $chatter.toggleClass("active")
 
     @form.find('#chatterPost').hammer({drag: false, transform: false, hold: false})
     .on 'tap', (event) =>
