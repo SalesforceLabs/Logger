@@ -216,13 +216,13 @@ class Config
         fillUpActions()
 
       when SFDC.OPPORTUNITY
-        if Config.isFieldVisible(type, "CloseDate")
+        ###if Config.isFieldVisible(type, "CloseDate")
           actions.push getCloseDate()
 
         if Config.isFieldVisible(type, "StageName")
-          actions.push getStageName()
+          actions.push getStageName()###
 
-        fillUpActions()
+        #fillUpActions()
       else
         LoggrUtil.log "Error: Unkown type #{type}"
 
