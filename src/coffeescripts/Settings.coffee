@@ -43,11 +43,7 @@ class Settings
   # `callback` Callback function (partial)
   @getObjectSettings: (callback) ->
     objects = []
-    types = [SFDC.CONTACT, SFDC.ACCOUNT]
-    if Config.hasType(SFDC.OPPORTUNITY)
-      types.push SFDC.OPPORTUNITY
-    if Config.hasType(SFDC.LEAD)
-      types.push SFDC.LEAD
+    types = Config.getSupportedObjects()
 
     getSetting = (type) ->
       #LoggrUtil.log "type #{type}"
