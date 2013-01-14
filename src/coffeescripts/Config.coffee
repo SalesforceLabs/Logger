@@ -126,11 +126,20 @@ class Config
 
       callback err
 
+  # Returns an array of supported objects
+  @getSupportedObjects: ->
+    objects = []
+    objects.push SFDC.CONTACT if Config.hasType SFDC.CONTACT
+    objects.push SFDC.ACCOUNT if Config.hasType SFDC.ACCOUNT
+    objects.push SFDC.OPPORTUNITY if Config.hasType SFDC.OPPORTUNITY
+    objects.push SFDC.LEAD if Config.hasType SFDC.LEAD
+    return objects
+
   # Invokes describe call for all supported record types.  
   # `callback` Callback function invoked when complete.
   @describeObjects: (callback) ->
 
-    objects = [SFDC.CONTACT, SFDC.ACCOUNT, SFDC.OPPORTUNITY, SFDC.LEAD]
+    objects = Config.getSupportedObjects()
 
     count = objects.length
     describe = (type) ->
