@@ -161,6 +161,7 @@ class SFDC
   # `accountId` Id of the account to find related contacts on  
   # `callback` Callback function (err, data)
   @getRelated: (relatedObject, accountId, callback) ->
+    LoggrUtil.log "getRelated"
     soql = "SELECT Id, Name FROM #{relatedObject}
             WHERE Account.Id = '#{accountId}' ORDER BY Name"
 
@@ -169,6 +170,7 @@ class SFDC
   # `accountId` Id of the account to count the related contacts on  
   # `callback` Callback function (err, data)
   @getRelatedCount: (relatedObject, accountId, callback) ->
+    LoggrUtil.log "getRelatedCount"
     soql = "SELECT COUNT() FROM #{relatedObject} WHERE Account.Id = '#{accountId}'"
     SFDC.query soql, callback
 
@@ -186,6 +188,7 @@ class SFDC
   # `accountIds` Array of account IDs  
   # `callback` Callback function (err, result)
   @getAccountNames: (accountIds, callback) ->
+    LoggrUtil.log "getAccountNames"
     soql = SFDC.getAccountNameQuery accountIds
     SFDC.query soql, callback
 
@@ -193,6 +196,7 @@ class SFDC
   # `accountId` Filter opportunities by account  
   # `callback` Callback function (err, data)
   @opportunities: (accountId, callback) ->
+    LoggrUtil.log "get opportunities"
     soql = "SELECT Id, Name
             FROM Opportunity
             WHERE IsClosed=false AND AccountId='#{accountId}' ORDER BY LastActivityDate"
@@ -295,31 +299,38 @@ class SFDC
           Platform.hideStatusBarActivityIndicator()
       success: (data) ->
         callback null, data
-      error: (jqXHR, textStatus, errorThrown) ->
-        LoggrUtil.log "AJAX error #{jqXHR} status: #{jqXHR.status}. textStatus #{textStatus}"
+      error: (err, textStatus, errorThrown) ->
+        LoggrUtil.log "AJAX error #{JSON.stringify(err)}"
 
         # check if it was a retry with same previous error
-        if jqXHR.status is failOnError
-          callback jqXHR, null
+        if err.status is failOnError
+          if err.status is 0
+            LoggrUtil.logConnectionError()
+          else
+            SFDC.showCustomError err, ->
+              callback err, null
         # else if request just failed to connect to network, try again in @_MIN_WAIT_TIME
-        else if jqXHR.status is 0
-          setTimeout retryFn(0), SFDC._MIN_WAIT_TIME
+        else if err.status is 0
+          LoggrUtil.log "Status 0. Retry in #{SFDC._MIN_WAIT_TIME}ms"
+          setTimeout ->
+            retryFn(0)()
+          , SFDC._MIN_WAIT_TIME
         # else if request failed due to Unauthorized error, enqueue request for future
-        else if jqXHR.status is 401
+        else if err.status is 401
           if SFDC.allowRequestQueueing
             LoggrUtil.log "Session inactive. Adding the request to the queue!"
             # Add request to queue to be retried after authentication.
             SFDC.requestQueue.push retryFn(401)
           else # If request queueing is not supported then just callback with error
-            callback jqXHR, null
+            callback err, null
 
           # If sessionAlive is marked as true, then mark ready status as false and initiate authentication
           if SFDC.sessionAlive
             SFDC.setReady false
             SFDC.authenticator?()
         else
-          SFDC.showCustomError jqXHR, ->
-            callback jqXHR, null
+          SFDC.showCustomError err, ->
+            callback err, null
             
     # onlyOnce = true, if you want to retry this AJAX request only once no matter if it succeeds or fails.
     retryFn = (previousError) ->
@@ -330,7 +341,7 @@ class SFDC
       # If no valid active session present just add to request queue, if allowed
       isOnline = true
       if SFHybridApp? and !SFHybridApp.deviceIsOnline()
-        LoggrUtil.logConnectionError jqXHR
+        LoggrUtil.logConnectionError()
         callback jqXHR, null
       else if !SFDC.sessionAlive and SFDC.allowRequestQueueing
         LoggrUtil.log "Session inactive. Adding the request to the queue!"
@@ -383,37 +394,37 @@ class SFDC
         message += msg.message + "\n"
     message        
 
-  @showCustomError: (jqXHR, callback) ->
-    LoggrUtil.log jqXHR
+  @showCustomError: (err, callback) ->
+    LoggrUtil.log "showCustomError " + JSON.stringify(err)
 
     # 400
-    if SFDC.isFieldCustomValidation(jqXHR)
+    if SFDC.isFieldCustomValidation(err)
       Dialog.alert L.get("error"), L.get("error_custom_validation_rule")
     # Expose 400 and 404 directly to the user.
-    else if jqXHR.status is 400 or jqXHR.status is 404
+    else if err.status is 400 or err.status is 404
       # json = {"readyState":4,"responseText":"[{\"message\":\"The requested resource does not exist\",\"errorCode\":\"NOT_FOUND\"}]","status":404,"statusText":"Not Found"}
-      LoggrUtil.log "Error: " + JSON.stringify(jqXHR)
-      message = SFDC.getMessageFromError jqXHR
-      Dialog.alert jqXHR.statusText, message
-    else if jqXHR.status is 403
-      if SFDC.isRestAPIDisabled(jqXHR)
+      LoggrUtil.log "Error: " + JSON.stringify(err)
+      message = SFDC.getMessageFromError err
+      Dialog.alert err.statusText, message
+    else if err.status is 403
+      if SFDC.isRestAPIDisabled(err)
         Dialog.alert L.get("error"), L.get("error_rest_api")
-      else if SFDC.isChatterAPIDisabled(jqXHR)
+      else if SFDC.isChatterAPIDisabled(err)
         LoggrUtil.log "Chatter API disabled."
         Config.chatterEnabled = false
-      else if SFDC.isRequestLimitExceeded(jqXHR)
+      else if SFDC.isRequestLimitExceeded(err)
         Dialog.alert L.get("error"), L.get("error_request_limit_exceeded")
-      else if SFDC.isForbidden(jqXHR)
+      else if SFDC.isForbidden(err)
         LoggrUtil.log "Forbidden"
-        callback jqXHR, null
+        callback err, null
     # 503
-    else if SFDC.isServiceUnavailable(jqXHR)
+    else if SFDC.isServiceUnavailable(err)
       Dialog.alert L.get("error"), L.get("error_service_unavailable")
     
     else
-      LoggrUtil.logError(JSON.stringify jqXHR)
+      LoggrUtil.logError(JSON.stringify err)
       
-    callback jqXHR, null
+    callback err, null
 
 if document? then $(document).on 'online', -> SFDC.replayQueue()
 window?.SFDC = SFDC
