@@ -79,7 +79,8 @@ class LoggrUtil
     if LoggrUtil.DEBUG
       console.log msg
     
-    LoggrUtil.MEM_LOG = new Date().toJSON() + ': ' + msg + '\n' + LoggrUtil.MEM_LOG
+    NEWLINE = if Platform.isAndroid() then '%0D%0A' else '\n'
+    LoggrUtil.MEM_LOG = new Date().toJSON() + ': ' + msg + NEWLINE + LoggrUtil.MEM_LOG
     if LoggrUtil.MEM_LOG.length > LoggrUtil.MAX_MEM_LOG_LENGTH
       LoggrUtil.MEM_LOG = LoggrUtil.MEM_LOG.substring 0, LoggrUtil.MAX_MEM_LOG_LENGTH
 
