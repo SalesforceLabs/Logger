@@ -67,6 +67,8 @@
 		<string>CDVNotification</string>
 		<key>SplashScreen</key>
 		<string>CDVSplashScreen</string>
+		<key>Device</key>
+		<string>CDVDevice</string>
 	</dict>
 </dict>
 </plist>
