@@ -14,6 +14,7 @@ typedef enum SFLogLevel {
 	SFLogLevelError,
 } SFLogLevel;
 
+typedef void (^SFLogBlock) (NSString *msg);
 
 #define SFLogAssert(_cond, _desc, ...) \
 do { \
@@ -116,5 +117,11 @@ if (!(_cond)) { \
  @return YES if an assertion was recorded, NO otherwise.
  */
 + (BOOL)assertionRecordedAndClear;
+
+/**
+ Adds a supplementary block that is invoked when a log line is written.
+ @param block Block to invoke when a log line is written.
+ */
++ (void)setLogBlock:(SFLogBlock)block;
 
 @end
