@@ -45,7 +45,7 @@
         <activity
             android:label="@string/app_name"
             android:name="com.salesforce.loggr.LoggrGapActivity"
-            android:configChanges="keyboardHidden" >
+            android:configChanges="orientation|keyboardHidden|screenSize" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
