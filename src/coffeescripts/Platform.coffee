@@ -24,7 +24,7 @@ class Platform
   @_eventListeners = []
 
   # Returns flag if user agent is Android
-  @isAndroid: -> navigator.userAgent.toLowerCase().indexOf("android") isnt -1
+  @isAndroid: -> navigator?.userAgent.toLowerCase().indexOf("android") isnt -1
 
   # _return_ EULA template. 
   @getEULA: ->
