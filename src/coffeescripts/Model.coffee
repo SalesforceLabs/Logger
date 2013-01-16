@@ -157,19 +157,23 @@ class Model
   @getGeoQuery: (json) ->
     type = LoggrUtil.getType json.Id
     query = null
+    newlineRegexp = /(\r\n|\n|\r)/gm
     if type is SFDC.CONTACT
       if json.MailingStreet and json.MailingCity
-        query = 'q=' + json.MailingStreet + ', ' + json.MailingCity
+        query = 'q=' + json.MailingStreet.replace(newlineRegexp, " ")
+        query += ', ' + json.MailingCity
         query += ', ' + json.MailingState if json.MailingState
         query += ' ' + json.MailingPostalCode if json.MailingPostalCode
     else if type is SFDC.ACCOUNT
       if json.BillingStreet and json.BillingCity
-        query = 'q=' + json.BillingStreet + ', ' + json.BillingCity
+        query = 'q=' + json.BillingStreet.replace(newlineRegexp, " ")
+        query += ', ' + json.BillingCity
         query += ', ' + json.BillingState if json.BillingState
         query += ' ' + json.BillingPostalCode if json.BillingPostalCode
     else if type is SFDC.LEAD
       if json.Street and json.City
-        query = 'q=' + json.Street + ', ' + json.City
+        query = 'q=' + json.Street.replace(newlineRegexp, " ")
+        query += ', ' + json.City
         query += ', ' + json.State if json.State
         query += ' ' + json.PostalCode if json.PostalCode
     return query
