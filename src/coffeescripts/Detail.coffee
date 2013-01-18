@@ -203,7 +203,7 @@ class Detail extends EventDispatcher
       # This hack is needed in order to show the transition.
       $detail?.find("#detailPending").spin "small", "white"
       setTimeout =>
-        #Model.setDetail detail
+        @renderDetail detail, $detail
         $detail?.find("#detailPending").spin false
       , 1
 
