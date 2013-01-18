@@ -199,7 +199,13 @@ class Detail extends EventDispatcher
           $detail?.find("#detailPending").spin false
     else
       LoggrUtil.log 'Found detail in cache.'
-      @renderDetail detail, $detail  
+
+      # This hack is needed in order to show the transition.
+      $detail?.find("#detailPending").spin "small", "white"
+      setTimeout =>
+        #Model.setDetail detail
+        $detail?.find("#detailPending").spin false
+      , 1
 
   # `json` Contact, Account, ...  
   # `$detail` JQuery detail div
