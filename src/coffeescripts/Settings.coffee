@@ -81,7 +81,7 @@ class Settings
     partial =
       name: Platform.APP_NAME
       version: Platform.VERSION
-      options1: [{label:L.get("share_on_chatter"), id:"shareChatter"}, {label:"Submit Feedback", id:"feedback"}, {label:"Send Logs", id:"logs"}, {label:L.get("follow_on_twitter"), id:"twitter"}]
+      options1: [{label:L.get("share_on_chatter"), id:"shareChatter"}, {label:L.get("submit_feedback"), id:"feedback"}, {label:L.get("send_logs"), id:"logs"}, {label:L.get("follow_on_twitter"), id:"twitter"}]
       options2: [{label:L.get("about"), id:"about"}, {label:L.get("eula"), id:"eula"}]
       options3: [{label:L.get("logout"), id:"logout"}]
       objects: objectSettings
