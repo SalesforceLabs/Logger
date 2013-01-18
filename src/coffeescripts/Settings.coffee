@@ -70,7 +70,6 @@ class Settings
   # Shows the settings
   @show: ->
     Settings.getObjectSettings (result) ->
-      LoggrUtil.log "objectSettingsPartial " + JSON.stringify(result)
       Settings.render result
 
   # Renders the settings after the object partial part has been computed
