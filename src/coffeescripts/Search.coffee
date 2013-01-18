@@ -138,17 +138,22 @@ class Search extends EventDispatcher
       
     $('#searchForm').bind 'submit', @_executeSearch
     $search = $("#search")
+
     $x = $('#x')
     $x.hammer(UI.buttonHammerOptions).on "tap", =>
       $x.hide()
       @_cachedResult.searchTerm = null
       $search.attr 'value', ""
-    $search.bind 'keyup input paste', (event) ->
-      searchTerm = $search.attr 'value'
-      if searchTerm.length > 0
-        $x.show()
-      else
-        $x.hide()
+
+    # hide x on Android since positioning is different
+    if not Platform.isAndroid()
+      $search.bind 'keyup input paste', (event) ->
+        searchTerm = $search.attr 'value'
+
+        if searchTerm.length > 0
+          $x.show()
+        else
+          $x.hide()
 
     if @_cachedResult.data
       $search.attr "value", @_cachedResult.searchTerm if @_cachedResult.searchTerm

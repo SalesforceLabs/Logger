@@ -16,7 +16,7 @@
         {
           "jsDir": "./libs/client/container",
           "jsFile": "./android/assets/www/javascripts/container.js", 
-          "jsFiles": ["cordova-android-1.8.1.js", "datePickerPlugin.js", "SFHybridApp.js", "SalesforceOAuthPlugin.js", "EmailComposer.js", "PhoneDialer.js", "applicationPreferences.js"]
+          "jsFiles": ["cordova-android-2.2.0.js", "datePickerPlugin.js", "SFHybridApp.js", "SalesforceOAuthPlugin.js", "EmailComposer.js", "PhoneDialer.js", "applicationPreferences.js"]
         }
       ],
       "scriptTags": ["L.js", "Platform.js", "LoggrUtil.js", "EventDispatcher.js", "Dialog.js", "Config.js", "LocalyticsPhoneGap.js", "ContainerAuth.js", "libs.js", "InvokeUrl.js", "SFDC.js", "BaseAction.js", "Task.js", "Note.js", "Call.js", "OpptyEdit.js", "Edit.js", "Model.js", "UI.js", "Search.js", "Settings.js", "Panel.js", "Action.js", "Detail.js", "Main.js", "templates.js"]

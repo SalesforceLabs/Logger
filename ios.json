@@ -11,7 +11,7 @@
         {
           "jsDir": "./libs/client/container",
           "jsFile": "./www/javascripts/container.js", 
-          "jsFiles": ["cordova-1.8.1.js", "SFHybridApp.js", "SalesforceOAuthPlugin.js", "EmailComposer.js", "PhoneDialer.js", "applicationPreferences.js"]
+          "jsFiles": ["cordova-ios-2.2.0.js", "SFHybridApp.js", "SalesforceOAuthPlugin.js", "EmailComposer.js", "PhoneDialer.js", "applicationPreferences.js"]
         },
         {
           "jsDir": "./libs/client",
