@@ -306,6 +306,7 @@ class SFDC
         if err.status is failOnError
           if err.status is 0
             LoggrUtil.logConnectionError()
+            callback err, null
           else
             SFDC.showCustomError err, ->
               callback err, null
