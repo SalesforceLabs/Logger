@@ -416,8 +416,8 @@ class SFDC
       else if SFDC.isRequestLimitExceeded(err)
         Dialog.alert L.get("error"), L.get("error_request_limit_exceeded")
       else if SFDC.isForbidden(err)
-        LoggrUtil.log "Forbidden"
-        callback err, null
+        message = SFDC.getMessageFromError err
+        Dialog.alert err.statusText, message
     # 503
     else if SFDC.isServiceUnavailable(err)
       Dialog.alert L.get("error"), L.get("error_service_unavailable")
