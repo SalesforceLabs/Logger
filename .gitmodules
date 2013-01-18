@@ -1,3 +1,4 @@
 [submodule "android/external/SalesforceMobileSDK"]
 	path = android/external/SalesforceMobileSDK
 	url = https://github.com/forcedotcom/SalesforceMobileSDK-Android.git
+	ignore = dirty
