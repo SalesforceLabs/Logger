@@ -2,7 +2,7 @@ should = require 'should'
 global.LoggrUtil = require '../src/coffeescripts/LoggrUtil'
 SFDC = require '../src/coffeescripts/SFDC'
 
-describe 'SFDC', ->
+xdescribe 'SFDCSessionAive', ->
 
   defaultWait = SFDC._MIN_WAIT_TIME
 

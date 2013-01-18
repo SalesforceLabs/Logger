@@ -145,7 +145,8 @@ class Action extends EventDispatcher
     task = new Task detail, options, (err, data) =>
       callback?(err, data)
       if not err
-        @postAction()
+        # Cancel has no data
+        @postAction() if data
         @close()
       else
         LoggrUtil.log "Error: Task creation failed."

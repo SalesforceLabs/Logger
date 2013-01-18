@@ -83,7 +83,7 @@ class BaseAction extends EventDispatcher
             dateAsString = LoggrUtil.getISODate newDate
             currentField.val dateAsString
             LoggrUtil.log "set new date #{dateAsString}"
-            callback newDate
+            callback? newDate
             # This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
             currentField.blur()
 

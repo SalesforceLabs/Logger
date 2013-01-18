@@ -3,6 +3,10 @@ global.LoggrUtil = require '../src/coffeescripts/LoggrUtil'
 SFDC = require '../src/coffeescripts/SFDC'
 assert = require 'assert'
 
+global.Dialog =
+  alert: ->
+  show: ->
+
 global.SFHybridApp =
   deviceIsOnline: -> true
   

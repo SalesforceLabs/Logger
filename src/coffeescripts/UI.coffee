@@ -171,10 +171,12 @@ class UI
   # `success` Flag if the operation was successful  
   # `message` Message to show before hiding the overlay
   @hidePending: (success, message) ->
-    $("#overlay").css "pointer-events", "none"
     $pending = $ "#pending"
     $pending.spin false
-    timeout = 0
+    # NOTE: the timeout needs to be higher than
+    # the showPending delay (10ms) since in the
+    # offline case the error occurs right away.
+    timeout = 15
     if success
       $("#pending > label").text(message || L.get("saved"))
       imgUrl = if UI.isRetina() then "pending_over@2x" else "pending_over"
@@ -182,6 +184,7 @@ class UI
       timeout = 700
 
     setTimeout ->
+      $("#overlay").css "pointer-events", "none"
       if not Platform.isAndroid()
         $("#pendingOverlay").fadeOut 'fast', -> $("#pendingOverlay").remove()
       else

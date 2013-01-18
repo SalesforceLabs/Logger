@@ -69,7 +69,7 @@ class Note extends BaseAction
           ParentId: @json.Id
           IsPrivate: @isPrivate 
 
-        @disableFields()
+        @disableFields true
 
         UI.showPending L.get("saving")
 
@@ -81,6 +81,7 @@ class Note extends BaseAction
         SFDC.create 'Note', payload, (err, data) =>
           UI.hidePending(err is null)
           @callback err, data
+          @disableFields false if err
 
     return @form
 

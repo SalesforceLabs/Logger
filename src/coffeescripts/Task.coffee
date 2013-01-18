@@ -145,7 +145,7 @@ class Task extends BaseAction
     @initSubmitButton().hammer(UI.buttonHammerOptions)
     .on 'tap', (event) =>
       event.preventDefault()
-      LoggrUtil.log 'form vaid ' + formValid
+      LoggrUtil.log 'form valid ' + formValid
       if formValid
         LoggrUtil.log 'Create Task'
         subject = @form.find('#subject').attr 'value'
@@ -210,6 +210,7 @@ class Task extends BaseAction
         SFDC.create 'Task', payload, (err, data) =>
           UI.hidePending(err is null)
           @callback err, data
+          @disableFields false if err
 
     return @form
 
