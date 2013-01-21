@@ -51,8 +51,8 @@ class Platform
   # Call phone number  
   # `phone` Number to call
   @call: (phone) ->
-    if cordova? and window.plugins.phoneDialer? and not Platform.isAndroid()
-      window.plugins.phoneDialer.dial(encodeURI phone)
+    if cordova? and not Platform.isAndroid()
+      window.location = 'telprompt://' + phone
     else
       window.location = 'tel:' + phone
 
