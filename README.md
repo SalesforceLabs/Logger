@@ -100,7 +100,8 @@ The main entrypoint is `src/coffeescripts/Main.coffee`.
 ### Styling
 
 Styling is implemented using [Stylus](http://learnboost.github.com/stylus/).  
-`src/stylesheets/main.styl` contains the main stylesheets and `src/stylesheets/mixins.styl` contains the mixin-functions.
+
+For mixins, vendor prefixes etc. [nib](https://github.com/visionmedia/nib) is used.
 
 ### Templates
 

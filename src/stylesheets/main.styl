@@ -1,15 +1,20 @@
-@import "src/stylesheets/mixins"
+@import 'libs/nib/gradients'
+@import 'libs/nib/image'
+@import 'libs/nib/border'
+@import 'libs/nib/reset'
+@import 'libs/nib/vendor'
+@import 'libs/nib/flex'
+@import 'libs/nib/text/ellipsis'
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
-  display block
+/* nib reset */
+reset-html5()
 
-audio, canvas, video
-  display inline-block
-  *display inline
-  *zoom 1
-
-audio:not([controls])
-  display none
+// shorthand for relativ positioning
+trbl(t, r, b, l)
+  top t
+  right r
+  bottom b
+  left l
 
 /* Ensures content is hidden from all presentations, including screenreaders */
 [hidden]
@@ -19,13 +24,8 @@ audio:not([controls])
 html
   height 100%
   font-size 100%
-  -webkit-text-size-adjust 100%
-  -ms-text-size-adjust 100%
-
-  /* Disable any selection */
-  -webkit-user-select none
-  -moz-user-select none
-  -ms-user-select none
+  text-size-adjust(100%)
+  user-select(none)
   -webkit-touch-callout none
   -webkit-user-drag none
   -webkit-tap-highlight-color rgba(0,0,0,0)
@@ -39,7 +39,7 @@ body
   background-color #FFF
   color #eee
   overflow-x hidden
-  background: url("images/bg.png") repeat;
+  image("images/bg.png") repeat
 
 a
   color grey
@@ -72,7 +72,7 @@ ul
   background-color rgba(0, 0, 0, .75)
 
   #pending
-    borderRadius(10px)
+    border-radius 10px
     position fixed
     left 50%
     top 50%
@@ -111,7 +111,7 @@ ul
   trbl(82px, 0, 0, 0)
   
 .actionForm
-  backgroundGradient(#FFFFFF, #DBDBDB)
+  background linear-gradient(top, #FFF, #DBDBDB)
   padding 10px 10px 10px 10px
 
   button
@@ -143,10 +143,10 @@ ul
 #drill_down
   width 100%
   padding 6px 6px 6px 6px
-  borderBoxSizing()
+  box-sizing(border-box)
   #drill_down_button
-    borderRadius(6px)
-    backgroundGradient(#fff, #eee)
+    border-radius 6px
+    background linear-gradient(top, #FFF, #eee)
     width 100%
     height 30px
     color #666
@@ -156,23 +156,23 @@ ul
       float right
       padding 10px 10px 0
     div
-      ellipsisOverflow()
+      ellipsis()
 
 #related_list_container
   background-color #fff
   position absolute
   trbl(0px, 0px, 0px, 10px)
-  boxShadow(-10px 0px 20px rgb(22, 30, 30))
+  box-shadow(-10px 0px 20px rgb(22, 30, 30))
   border-left 1px solid #161E1E
 
 .tableListUp
-  backgroundGradient(#f2f2f2, #f2f2f2)
+  background linear-gradient(top, #f2f2f2, #f2f2f2)
 
 .tableListPressed
-  backgroundGradient(#fff, #fff)
+  background linear-gradient(top, #FFF, #FFF)
 
 #tableList
-  boxShadow(0px 0px 4px rgba(0, 0, 0, .63))
+  box-shadow(0px 0px 4px rgba(0, 0, 0, .63))
   li:first-child
     border-top-left-radius 3px 3px
     border-top-right-radius 3px 3px
@@ -192,7 +192,7 @@ ul
   div
     line-height 9px
     padding: 15px 5px 10px 15px
-    ellipsisOverflow()
+    ellipsis()
   img
     float right
     padding 15px 10px 0
@@ -218,7 +218,7 @@ ul
       padding 0px 10px 0px 14px
       height 38px
       line-height 38px
-      ellipsisOverflow()
+      ellipsis()
     img
       float right
       padding-right 10px
@@ -231,7 +231,7 @@ ul
     height 20px
     border-bottom solid #25272A 1px
     display block
-    ellipsisOverflow()
+    ellipsis()
     padding 15px 10px
     span
       font bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -245,7 +245,7 @@ ul
     height 30px
     border-bottom solid #25272A 1px
     display block
-    ellipsisOverflow()
+    ellipsis()
     padding 10px 10px
     span
       font bold 15px "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -260,11 +260,11 @@ ul
 
 .listUp
   border-top solid #5b6167 1px
-  backgroundGradient(#3f454d, #3f454d)
+  background linear-gradient(top, #3f454d, #3f454d)
 
 .listPressed
-  backgroundGradient(#016DBF, #2EADEC)
-  /*boxShadow(inset 0px 1px 0px 10px rgba(0, 0, 0, .38))*/
+  background linear-gradient(top, #016DBF, #2EADEC)
+  /*box-shadow(inset 0px 1px 0px 10px rgba(0, 0, 0, .38))*/
 
 #mainNav
   display table
@@ -280,13 +280,13 @@ ul
 #types
   border-top solid #1c1c1e 1px
   ul
-    displayBox()
+    display -webkit-box
     border-bottom solid #0B0C0D 1px
-    
-    backgroundGradient(#424549, #25272B)
-    /*boxShadow(inset 0px 1px 27px 7px rgba(0, 0, 0, .8))*/
+    background linear-gradient(top, #424549, #25272B)
+    /*box-shadow(inset 0px 1px 27px 7px rgba(0, 0, 0, .8))*/
   li
-    boxFlex(1)
+    flex(1)
+    
     text-align center
     height 22px
     margin 4px
@@ -296,9 +296,8 @@ ul
     text-shadow 0px 1px 2px rgba(0, 0, 0, .7)
 
 .selectedType
-  /* 292C30 85% | 232529 100%*/
-  backgroundGradient(#272c30, #272c30)
-  borderRadius(5px)
+  background linear-gradient(top, #272c30, #272c30)
+  border-radius 5px
   -webkit-box-shadow 0px 1px 1px rgba(255,255,255,.5), rgba(0,0,0,.8) 0px 1px 35px inset
 
 .unselectedType
@@ -308,7 +307,7 @@ ul
 .detail
   position absolute
   trbl(0px, 0px, 0px, 5px)
-  boxShadow(-10px 0px 20px rgb(22, 30, 30))
+  box-shadow(-10px 0px 20px rgb(22, 30, 30))
   border-left 1px solid #161E1E
   background-color #414E59
 
@@ -330,7 +329,7 @@ ul
     padding-top 11px
     padding-left 20px
     border-bottom 1px solid #000
-    backgroundGradient(#2A333A, #1B1F24)
+    background linear-gradient(top, #2A333A, #1B1F24)
 
   #detailContent
     width 100%
@@ -339,7 +338,7 @@ ul
   #detailAction
 
     ul
-      displayBox()
+      display -webkit-box
     ul:last-child
       border-bottom solid #20262d 1px
 
@@ -357,7 +356,7 @@ ul
       width 106.66px
       text-align center
       text-shadow 1px 1px 0px #2A3036
-      boxFlex(1)
+      flex(1)
 
 #glare
   position absolute
@@ -365,10 +364,10 @@ ul
   height 82px
 
 .actionUp
-  background-image -webkit-gradient(linear,left top,right bottom,from(#77818C),to(#4C5562))
+  background-image: -webkit-gradient(linear,left top,right bottom,from(#77818C),to(#4C5562))
 
 .actionPressed
-  backgroundGradient(#4ebef2, #0088d1)
+  background linear-gradient(top, #4ebef2, #0088d1)
 
 .action1
   border-right solid #384556 1px
@@ -386,45 +385,45 @@ ul
 .action4
   border-top solid #7D858F 1px
   border-right solid #384556 1px
-  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+  box-shadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
 
 .action5
   border-top solid #7D858F 1px
   border-left solid #818893 1px
   border-right solid #384556 1px
-  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+  box-shadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
 
 .action6
   border-top solid #7D858F 1px
   border-left solid #818893 1px
-  boxShadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
+  box-shadow(inset 0px -10px 10px -9px rgba(0, 0, 0, .4))
 
 .checkIn
-  background: url(images/actions/checkIn.png)
+  image("images/actions/checkIn.png")
 
 .followUp
-  background url(images/actions/followUp.png)
+  image("images/actions/followUp.png")
 
 .takeNote
-  background url(images/actions/takeNote.png)
+  image("images/actions/takeNote.png")
 
 .call
-  background url(images/actions/call.png)
+  image("images/actions/call.png")
 
 .email
-  background url(images/actions/email.png)
+  image("images/actions/email.png")
 
 .map
-  background url(images/actions/map.png)
+  image("images/actions/map.png")
 
 .web
-  background url(images/actions/web.png)
+  image("images/actions/web.png")
 
 .close_date
-  background url(images/actions/close_date.png)
+  image("images/actions/close_date.png")
 
 .stage_name
-  background url(images/actions/stage_name.png)
+  image("images/actions/stage_name.png")
 
 #typeIndicator
   position absolute
@@ -433,62 +432,19 @@ ul
   
 #typeAccount
   @extends #typeIndicator
-  background-image url(images/001.png)
+  image("images/001.png")
 
 #typeContact
   @extends #typeIndicator
-  background-image url(images/003.png)
+  image("images/003.png")
 
 #typeOpportunity
   @extends #typeIndicator
-  background-image url(images/006.png)
+  image("images/006.png")
 
 #typeLead
   @extends #typeIndicator
-  background-image url(images/00Q.png)
-
-@media all and (-webkit-min-device-pixel-ratio: 1.5)
-
-  body
-    background: url("images/bg@2x.png") repeat;
-
-  #typeAccount
-    @extends #typeIndicator
-    background-image url(images/001@2x.png)
-    background-size 35px 35px
-
-  #typeContact
-    @extends #typeIndicator
-    background-image url(images/003@2x.png)
-    background-size 35px 35px
-
-  .checkIn
-    background-image url(images/actions/checkIn@2x.png)
-    background-size 37px 37px
-  .followUp
-    background-image url(images/actions/followUp@2x.png)
-    background-size 37px 37px
-  .takeNote
-    background-image url(images/actions/takeNote@2x.png)
-    background-size 37px 37px
-  .call
-    background-image url(images/actions/call@2x.png)
-    background-size 37px 37px
-  .email
-    background-image url(images/actions/email@2x.png)
-    background-size 37px 37px
-  .map
-    background-image url(images/actions/map@2x.png)
-    background-size 37px 37px
-  .web
-    background-image url(images/actions/web@2x.png)
-    background-size 37px 37px
-  .close_date
-    background url(images/actions/close_date@2x.png)
-    background-size 37px 37px
-  .stage_name
-    background url(images/actions/stage_name@2x.png)
-    background-size 37px 37px
+  image("images/00Q.png")
 
 .detailName
   color #FFF
@@ -497,7 +453,7 @@ ul
   font-size 24px
   margin-right 60px
   margin-bottom -3px
-  ellipsisOverflow()
+  ellipsis()
 
 .detailTitle
   line-height 17px
@@ -506,12 +462,12 @@ ul
   font-weight normal
   font-size 14px
   margin-right 10px
-  ellipsisOverflow()
+  ellipsis()
 
 
 #formBG
   border-color #a2a2a2
-  boxShadow(inset 0px 1px 3px 0px rgba(0, 0, 0, .4))
+  box-shadow(inset 0px 1px 3px 0px rgba(0, 0, 0, .4))
   background-color #F2F2F2
   font-size 16px
 
@@ -530,12 +486,12 @@ form
     color #484848
     outline none
     width 100%
-    borderBoxSizing()
+    box-sizing(border-box)
     @extends #formBG
   input[type="date"]
     color #484848
     border-color #a2a2a2
-    boxShadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
+    box-shadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
     background-color #F2F2F2
     width 50%
     -webkit-appearance none
@@ -551,13 +507,13 @@ form
     height 7em
     outline none
     width 100%
-    borderBoxSizing()
+    box-sizing(border-box)
 
 #editForm
   input[type="date"]
     color #484848
     border-color #a2a2a2
-    boxShadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
+    box-shadow(inset 0px 1px 2px 0px rgba(0, 0, 0, .22))
     background-color #F2F2F2
     width 100%
     -webkit-appearance none
@@ -565,7 +521,7 @@ form
     margin-bottom 4px
     height 30px
     font-size 16px
-    borderBoxSizing()
+    box-sizing(border-box)
 
 label
   color #666666
@@ -591,16 +547,9 @@ label#error
     padding-top 7px
 
 .lockActive
-  background url("images/lock_active.png")
+  image("images/lock_active.png")
 .lockInactive
-  background url("images/lock_inactive.png")
-@media all and (-webkit-min-device-pixel-ratio: 1.5)
-  .lockActive
-    background-image url(images/lock_active@2x.png)
-    background-size 27px 27px
-  .lockInactive
-    background-image url(images/lock_inactive@2x.png)
-    background-size 27px 27px
+  image("images/lock_inactive.png")
 
 #cancel
   width 49%
@@ -610,8 +559,8 @@ label#error
 
 #searchHeader
   padding 6px 5px 6px 5px
-  boxShadow(inset 0px 2px 2px 0px rgba(0, 0, 0, .4))
-  backgroundGradient(#4c535c, #1f2225)
+  box-shadow(inset 0px 2px 2px 0px rgba(0, 0, 0, .4))
+  background linear-gradient(top, #4c535c, #1f2225)
   border-bottom solid #000 1px
 
   #xDiv
@@ -629,8 +578,8 @@ label#error
   border 10px
   height 90%
   text-align center
-  backgroundGradient(#4e5866, #495461)
-  boxShadow(0px, 0px, 8px, #000)
+  background linear-gradient(top, #4e5866, #495461)
+  box-shadow(0px, 0px, 8px, #000)
   border-radius(15px)
 
 .button
@@ -639,7 +588,7 @@ label#error
   padding 6px 24px
   text-decoration none
   display inline-block
-  borderRadius(2px)
+  border-radius 2px
 
 #logoutButton, #feedbackButton, #logsButton, #aboutButton, #eulaButton
   width 100%
@@ -650,22 +599,22 @@ label#error
 
 .signinButton
   width 145px
-  boxShadow(inset 0px 1px 0px 0px #87d3f9)
-  backgroundGradient(#00a1f2, #0172aa)
-  borderRadius(6px)
+  box-shadow(inset 0px 1px 0px 0px #87d3f9)
+  background linear-gradient(top, #00a1f2, #0172aa)
+  border-radius 6px
   border 1px solid #1c254a
   text-shadow 1px 1px 0px #114ea4
 
 .modalButton
   width 145px
-  boxShadow(inset 0px 1px 0px 0px #87d3f9)
-  backgroundGradient(#00A8D3, #005a99)
-  borderRadius(6px)
+  box-shadow(inset 0px 1px 0px 0px #87d3f9)
+  background linear-gradient(top, #00A8D3, #005a99)
+  border-radius 6px
   border 1px solid #134156
   text-shadow 1px 1px 0px #114ea4
 
 .actionBaseButton
-  backgroundGradient(#979C9E, #4E575B)
+  background linear-gradient(top, #979C9E, #4E575B)
   font-weight normal
 .actionButton
   @extends .actionBaseButton
@@ -674,13 +623,13 @@ label#error
   text-shadow 0px -1px 0px #292a2b
 .actionButtonDown
   @extends .actionBaseButton
-  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  box-shadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
   border 1px solid #787d80
   text-shadow 0px -1px 1px rgba(0,0,0,.3)
 
 .cancelBaseButton
   text-shadow 0px -1px 1px rgba(0,0,0,.3)
-  backgroundGradient(#B9BCBE, #868C8F)
+  background linear-gradient(top, #B9BCBE, #868C8F)
 .cancelButton
   @extends .cancelBaseButton
   -webkit-box-shadow 0px 1px 2px rgba(0,0,0,.4), #DEDFE0 0px 1px 0px 0px inset
@@ -688,10 +637,10 @@ label#error
 .cancelButtonDown
   @extends .cancelBaseButton
   border 1px solid #787d80
-  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  box-shadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
   
 .submitBaseButton
-  backgroundGradient(#96D400, #509900)
+  background linear-gradient(top, #96D400, #509900)
   text-shadow 0px -1px 0px #639600
 .submitButton
   @extends .submitBaseButton
@@ -699,27 +648,27 @@ label#error
   border 1px solid #57771D
 .submitButtonDown
   @extends .submitBaseButton
-  boxShadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
+  box-shadow(inset 0px 1px 3px 0px rgba(0,0,0,.45))
   border 1px solid #52711b
 .submitButtonDisabled
-  boxShadow(inset 0px 1px 0px 0px #DEDFE0)
-  backgroundGradient(#DBDCDD, #C2C5C7)
+  box-shadow(inset 0px 1px 0px 0px #DEDFE0)
+  background linear-gradient(top, #DBDCDD, #C2C5C7)
   border 1px solid #888B8D
   text-shadow 0px -1px 0px #828688
 
 .cancelDialog
-  boxShadow(inset 0px 1px 0px 0px #DEDFE0)
-  backgroundGradient(#B9BCBE, #868C8F)
+  box-shadow(inset 0px 1px 0px 0px #DEDFE0)
+  background linear-gradient(top, #B9BCBE, #868C8F)
   border 1px solid #141415
   text-shadow 0px -1px 0px #828688
-  borderRadius(2px)
+  border-radius 2px
 
 .submitDialog
-  boxShadow(inset 0px 1px 0px 0px #D0EA87)
-  backgroundGradient(#96D400, #509900)
+  box-shadow(inset 0px 1px 0px 0px #D0EA87)
+  background linear-gradient(top, #96D400, #509900)
   border 1px solid #28370c
   text-shadow 0px -1px 0px #639600
-  borderRadius(2px)
+  border-radius 2px
 
 #dialog
   position absolute
@@ -728,13 +677,13 @@ label#error
   right 10px
   background-color #4d5153
   border 1px solid #000
-  boxShadow(0px 1px 5px 0px rgba(0, 0, 0, .25))
-  borderRadius(5px)
+  box-shadow(0px 1px 5px 0px rgba(0, 0, 0, .25))
+  border-radius 5px
 
   header
     text-align center
-    background-image -webkit-gradient(linear, 0% 0%, 0% 100%, from(#454748), to(#000), color-stop(.41, #181920), color-stop(.58, #181920), color-stop(.97, #444647), color-stop(.98, #616364))
-    boxShadow(inset 0px 1px 0px 0px rgba(255, 255, 255, .19))
+    background linear-gradient(top, 0% #454748, 41% #181920, 58% #181920, 97% #444647, 98% #616364, 100% #000)
+    box-shadow(inset 0px 1px 0px 0px rgba(255, 255, 255, .19))
     padding-top 12px
     padding-left 10px
     padding-bottom 12px
@@ -745,7 +694,7 @@ label#error
       font-size 16px
       font-weight bold
   article
-    boxShadow(inset 0px 0px 42px 0px #333639)
+    box-shadow(inset 0px 0px 42px 0px #333639)
     color #fff
     padding-left 10px
     padding-right 10px
@@ -753,7 +702,7 @@ label#error
     padding-bottom 20px
     font-size 15px
   footer
-    boxShadow(inset 0px 0px 42px 0px #333639)
+    box-shadow(inset 0px 0px 42px 0px #333639)
     padding-left 10px
     padding-right 10px
     padding-bottom 10px
@@ -794,9 +743,9 @@ label#error
       padding 15px
 
 #bccContainer
-  borderRadius 3px
+  border-radius 3px
   background-color #fff
-  borderBoxSizing()
+  box-sizing(border-box)
   padding 10px
   width 100%
   text-align left
@@ -811,7 +760,7 @@ label#error
     width 100%
     height 30px
     font-size 16px
-    borderBoxSizing()
+    box-sizing(border-box)
   .hint
     font-size 11px
     color #999
@@ -841,7 +790,7 @@ label#error
 #chatterPost, #privateNote
   border solid #c4c2c2 2px
   border-style solid
-  borderRadius 3px
+  border-radius 3px
   background-color #f2f2f2
   text-align left
   padding-left 12px
@@ -884,29 +833,26 @@ label#error
   z-index: 2;
   width: 28px;
   height: 28px;
-  background-image: -webkit-linear-gradient(top, #d0d0d0 0, #fcfcfc 100%);
-  background-image: linear-gradient(to bottom, #d0d0d0 0, #fcfcfc 100%);
+  background linear-gradient(top, #d0d0d0, #fcfcfc)
   -webkit-box-shadow 2px 0px 2px rgba(0,0,0,.2), rgba(255,255,255,.75) 0px 0px 4px inset
   border: 1px solid #636363;
-  border-radius: 100px;
+  border-radius 100px;
   -webkit-transition: -webkit-transform 0.1s ease-in-out, border 0.1s ease-in-out;
                   transition: transform 0.1s ease-in-out, border 0.1s ease-in-out;
 }
 
 /* Active state for toggle */
 .toggle.active {
-  background-color: #19a8e4;
-  background-image: -webkit-linear-gradient(top, #60aad5 0, #5394b9 100%);
-  background-image: linear-gradient(to bottom, #60aad5 0, #5394b9 100%);
-  border: 1px solid #2e5c76;
+  background-color #19a8e4
+  background linear-gradient(top, #60aad5, #5394b9)
+  border: #25c76
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, .25);
 }
 
 /* Active state for toggle handle */
 .toggle.active .toggle-handle {
-  border: 1px solid #2d5165;
-  background-image: -webkit-linear-gradient(top, #d0d0d0 0, #fcfcfc 100%);
-  background-image: linear-gradient(to bottom, #d0d0d0 0, #fcfcfc 100%);
+  border: #2d5165
+  background linear-gradient(top, #d0d0d0, #fcfcfc)
   -webkit-box-shadow -2px 0px 2px rgba(0,0,0,.2), rgba(255,255,255,.75) 0px 0px 4px inset
   -webkit-transform: translate3d(48px,0,0);
           transform: translate3d(48px,0,0);
