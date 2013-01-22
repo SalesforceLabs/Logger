@@ -308,8 +308,8 @@
     "de": "Sie haben das Request Limit erreicht. Bitte kontakieren Sie Ihren Salesforce Administrator für weitere Hilfe."
   },
   "error_custom_validation_rule":{
-    "en": "Sorry, we found a custom validation rule. Logger does not support custom validation rules at this time. Please contact saleslogger@salesforce.com for further information.",
-    "de": "Wir haben eine Custom Validation Rule gefunden. Diese Funktion wird von Logger derzeit nicht unterstützt. Bitten kontakieren sie saleslogger@salesforce.com für weitere Informationen."
+    "en": "Sorry, we found a custom validation rule. Logger does not support custom validation rules at this time.",
+    "de": "Wir haben eine Custom Validation Rule gefunden. Diese Funktion wird von Logger derzeit nicht unterstützt."
   },
   "error_service_unavailable":{
     "en": "Sorry, the service is currently unavailable. Please try again later.",
