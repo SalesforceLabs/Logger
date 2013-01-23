@@ -108,13 +108,6 @@ class LoggrUtil
   @logConnectionError = (error) ->
     Dialog.alert L.get("offline"), L.get("offline_alert")
 
-  # Log an app error and send logs via email  
-  # `error` Error description
-  @logError = (error) ->
-    LoggrUtil.log 'error ' + error
-    Dialog.show L.get("error"), L.get("error_alert"), L.get("send"), ->
-      Platform.sendLogs()
-
   # Helper function to check if hash is for detail
   @isDetailHash: (hash) -> hash.indexOf("#detail?id=") is 0
 

@@ -281,7 +281,7 @@ class SFDC
 
     LoggrUtil.log "ajax #{type}:" + url
 
-    getXHRConfig = (failOnError) ->
+    getXHRConfig = (lastErrorStatus) ->
       url: url
       type: type
       data: data
@@ -300,10 +300,11 @@ class SFDC
       success: (data) ->
         callback null, data
       error: (err, textStatus, errorThrown) ->
-        LoggrUtil.log "AJAX error #{JSON.stringify(err)}"
+        LoggrUtil.log "AJAX error #{JSON.stringify(err)}."
 
         # check if it was a retry with same previous error
-        if err.status is failOnError
+        if err.status is lastErrorStatus
+          LoggrUtil.log "Repeated error status: #{err.lastErrorStatus}"
           if err.status is 0
             LoggrUtil.logConnectionError()
             callback err, null
@@ -327,8 +328,12 @@ class SFDC
 
           # If sessionAlive is marked as true, then mark ready status as false and initiate authentication
           if SFDC.sessionAlive
+            LoggrUtil.log "Re-authenticate"
             SFDC.setReady false
             SFDC.authenticator?()
+          else
+            LoggrUtil.log "Error while session already inactive."
+
         else
           SFDC.showCustomError err, ->
             callback err, null
@@ -423,7 +428,8 @@ class SFDC
       Dialog.alert L.get("error"), L.get("error_service_unavailable")
     
     else
-      LoggrUtil.logError(JSON.stringify err)
+      Dialog.show L.get("error"), L.get("error_alert"), L.get("send"), ->
+        Platform.sendLogs()
       
     callback err, null
 
