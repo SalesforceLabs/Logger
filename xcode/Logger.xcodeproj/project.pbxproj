@@ -22,8 +22,6 @@
 		263F781E1593CB8500AB09B8 /* ChildBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263F78131593CB8500AB09B8 /* ChildBrowserViewController.xib */; };
 		263F78251593CBCB00AB09B8 /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78241593CBCB00AB09B8 /* EmailComposer.m */; };
 		263F78261593CBCB00AB09B8 /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78241593CBCB00AB09B8 /* EmailComposer.m */; };
-		263F782A1593CBD100AB09B8 /* PhoneDialer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78291593CBD100AB09B8 /* PhoneDialer.m */; };
-		263F782B1593CBD100AB09B8 /* PhoneDialer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78291593CBD100AB09B8 /* PhoneDialer.m */; };
 		266DEB25161CE03700749FE2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 266DEB24161CE03700749FE2 /* Appirater.m */; };
 		266DEB26161CE03700749FE2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 266DEB24161CE03700749FE2 /* Appirater.m */; };
 		266DEB27161CE03700749FE2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 266DEB24161CE03700749FE2 /* Appirater.m */; };
@@ -93,7 +91,6 @@
 		B3D9592B15D1B98A004861D5 /* ChildBrowserMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78101593CB8500AB09B8 /* ChildBrowserMenuDelegate.m */; };
 		B3D9592C15D1B98A004861D5 /* ChildBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78121593CB8500AB09B8 /* ChildBrowserViewController.m */; };
 		B3D9592D15D1B98A004861D5 /* EmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78241593CBCB00AB09B8 /* EmailComposer.m */; };
-		B3D9592E15D1B98A004861D5 /* PhoneDialer.m in Sources */ = {isa = PBXBuildFile; fileRef = 263F78291593CBD100AB09B8 /* PhoneDialer.m */; };
 		B3D9592F15D1B98A004861D5 /* LocalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = B395B31015A5866200B9ADC4 /* LocalyticsPlugin.m */; };
 		B3D9593015D1B98A004861D5 /* LocalyticsDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B395B31915A599F400B9ADC4 /* LocalyticsDatabase.m */; };
 		B3D9593115D1B98A004861D5 /* LocalyticsSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B395B31B15A599F400B9ADC4 /* LocalyticsSession.m */; };
@@ -204,8 +201,6 @@
 		263F78131593CB8500AB09B8 /* ChildBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildBrowserViewController.xib; sourceTree = "<group>"; };
 		263F78231593CBCB00AB09B8 /* EmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailComposer.h; sourceTree = "<group>"; };
 		263F78241593CBCB00AB09B8 /* EmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailComposer.m; sourceTree = "<group>"; };
-		263F78281593CBD100AB09B8 /* PhoneDialer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneDialer.h; sourceTree = "<group>"; };
-		263F78291593CBD100AB09B8 /* PhoneDialer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneDialer.m; sourceTree = "<group>"; };
 		266DEB23161CE03700749FE2 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
 		266DEB24161CE03700749FE2 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
 		266DEB2C161CE27A00749FE2 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
@@ -385,16 +380,6 @@
 			path = Plugins/EmailComposer;
 			sourceTree = "<group>";
 		};
-		263F78271593CBD100AB09B8 /* PhoneDialer */ = {
-			isa = PBXGroup;
-			children = (
-				263F78281593CBD100AB09B8 /* PhoneDialer.h */,
-				263F78291593CBD100AB09B8 /* PhoneDialer.m */,
-			);
-			name = PhoneDialer;
-			path = Plugins/PhoneDialer;
-			sourceTree = "<group>";
-		};
 		266DEB22161CE03700749FE2 /* Appirator */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,7 +513,6 @@
 			children = (
 				26050BBE15D99E2600C9E39B /* ApplicationPreferences */,
 				B395B30E15A5866200B9ADC4 /* Localytics */,
-				263F78271593CBD100AB09B8 /* PhoneDialer */,
 				263F78221593CBCB00AB09B8 /* EmailComposer */,
 				263F780B1593CB8500AB09B8 /* ChildBrowser */,
 				26E7572C1620BDA70012EAE8 /* UIUtils */,
@@ -760,7 +744,6 @@
 				263F78191593CB8500AB09B8 /* ChildBrowserMenuDelegate.m in Sources */,
 				263F781B1593CB8500AB09B8 /* ChildBrowserViewController.m in Sources */,
 				263F78251593CBCB00AB09B8 /* EmailComposer.m in Sources */,
-				263F782A1593CBD100AB09B8 /* PhoneDialer.m in Sources */,
 				B395B31115A5866200B9ADC4 /* LocalyticsPlugin.m in Sources */,
 				B395B31F15A599F400B9ADC4 /* LocalyticsDatabase.m in Sources */,
 				B395B32115A599F400B9ADC4 /* LocalyticsSession.m in Sources */,
@@ -788,7 +771,6 @@
 				B3D9592B15D1B98A004861D5 /* ChildBrowserMenuDelegate.m in Sources */,
 				B3D9592C15D1B98A004861D5 /* ChildBrowserViewController.m in Sources */,
 				B3D9592D15D1B98A004861D5 /* EmailComposer.m in Sources */,
-				B3D9592E15D1B98A004861D5 /* PhoneDialer.m in Sources */,
 				B3D9592F15D1B98A004861D5 /* LocalyticsPlugin.m in Sources */,
 				B3D9593015D1B98A004861D5 /* LocalyticsDatabase.m in Sources */,
 				B3D9593115D1B98A004861D5 /* LocalyticsSession.m in Sources */,
@@ -816,7 +798,6 @@
 				263F781A1593CB8500AB09B8 /* ChildBrowserMenuDelegate.m in Sources */,
 				263F781C1593CB8500AB09B8 /* ChildBrowserViewController.m in Sources */,
 				263F78261593CBCB00AB09B8 /* EmailComposer.m in Sources */,
-				263F782B1593CBD100AB09B8 /* PhoneDialer.m in Sources */,
 				B395B31215A5866200B9ADC4 /* LocalyticsPlugin.m in Sources */,
 				B395B32015A599F400B9ADC4 /* LocalyticsDatabase.m in Sources */,
 				B395B32215A599F400B9ADC4 /* LocalyticsSession.m in Sources */,

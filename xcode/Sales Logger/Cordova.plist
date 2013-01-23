@@ -43,8 +43,6 @@
 		<string>LocalyticsPlugin</string>
 		<key>EmailComposer</key>
 		<string>EmailComposer</string>
-		<key>phonedialer</key>
-		<string>PhoneDialer</string>
 		<key>com.salesforce.oauth</key>
 		<string>SalesforceOAuthPlugin</string>
 		<key>ChildBrowserCommand</key>
