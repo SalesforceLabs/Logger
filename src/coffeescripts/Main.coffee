@@ -114,6 +114,7 @@ class Main
       $('body div#start button').hide()
       ContainerAuth.authenticate (err, oauthInfo) =>
         @oauthInfo = oauthInfo
+        Model.userId = oauthInfo.userId
         if err
           LoggrUtil.log 'Error: ' + err
           $('body div#app').empty().hide()

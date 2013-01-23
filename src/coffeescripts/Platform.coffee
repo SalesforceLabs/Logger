@@ -92,13 +92,15 @@ class Platform
 
   # Launch feedback email
   @launchFeedback = ->
-    body =  "Feedback " + Platform.VERSION + " #{device.platform} #{device.version}"
-    Platform.mail Platform.FEEDBACK_EMAIL, body
+    subject =  "Feedback " + Platform.VERSION + " #{device.platform} #{device.version}"
+    Platform.mail Platform.FEEDBACK_EMAIL, subject
 
   # Send app logs via email
   @sendLogs = ->
-    body = Platform.APP_NAME + " " + Platform.VERSION + " #{device.platform} #{device.version}"
-    Platform.mail Platform.FEEDBACK_EMAIL, body, LoggrUtil.MEM_LOG
+    subject = Platform.APP_NAME + " " + Platform.VERSION + " #{device.platform} #{device.version}"
+    NEWLINE = if Platform.isAndroid() then '%0D%0A' else '\n'
+    body = Model.userId + NEWLINE + LoggrUtil.MEM_LOG
+    Platform.mail Platform.FEEDBACK_EMAIL, subject, body
 
   # Get the persistent app property. Has to be asynchronous for support cordova callouts.  
   # `key` Property for which value has to be fetched  

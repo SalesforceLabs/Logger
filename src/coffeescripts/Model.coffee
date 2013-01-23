@@ -11,6 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ###
 class Model
 
+  # User Id set after OAuth authentication
+  @userId = null
+
   #@defaultRecordType = null
 
   # application scope for records (JSON)
