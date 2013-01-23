@@ -109,7 +109,12 @@ class SFDC
     if SFDC.isContainer
       SFDC.setSID ''
       SFDC.setInstanceUrl ''
-      callback null
+      try
+        cordova.require("salesforce/plugin/oauth").logout()
+      catch e
+        LoggrUtil.log "SFDC logout failed " + e
+      finally
+        callback null
     else
       $.getJSON SFDC._instanceUrl + '/logout', (data) ->
         callback data

@@ -198,7 +198,7 @@ class Settings
           Dialog.show L.get("logout"), L.get("logout_confirm"), L.get("ok"), ->
             $("#overlay").spin "large", "white"
             LoggrUtil.tagEvent 'settingsAction', {type:"Logout"}
-            SFDC.logout (data) ->
+            SFDC.logout ->
               LoggrUtil.log 'logout callback'
               $("#overlay").spin false
               ContainerAuth?.logout()
