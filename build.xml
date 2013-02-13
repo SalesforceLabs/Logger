@@ -46,7 +46,7 @@
         <echo message="Client Id ${client_id}"/>
         <delete dir="www"/>
         <mkdir dir="www"/>
-        <exec executable="/usr/local/bin/coffee">
+        <exec executable="coffee">
           <arg value="build.coffee"/>
           <arg value="ios.json"/>
           <arg value="${client_id}"/>
@@ -58,7 +58,7 @@
         <echo message="Client Id ${env.LOGGER_CLIENT_ID}"/>
         <delete dir="android/assets/www"/>
         <mkdir dir="android/assets/www"/>
-        <exec executable="/usr/local/bin/coffee">
+        <exec executable="coffee">
           <arg value="build.coffee"/>
           <arg value="android.json"/>
           <arg value="${client_id}"/>
