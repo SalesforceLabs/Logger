@@ -1,5 +1,6 @@
 <span>
 <strong>{{appName}}</strong> ({{version}}) is a free app from Salesforce Labs. Log sales activity in seconds and share that activity with Chatter.<br><br>
+Logger is open sourced on GitHub: https://github.com/ForceDotComLabs/Logger<br><br>
 Salesforce Labs is a program that enables salesforce.com engineers, professional services staff, and other salesforce.com employees to share applications they've created with the salesforce.com customer community. Inspired by employees' work with customers of all sizes and industries, these apps range from simple utilities to entire vertical solutions.<br><br>
 Salesforce Labs applications are free to use, but are not official salesforce.com products, and should be considered community projects - these apps are not officially tested or documented. For support on any Force.com Labs app please consult the Successforce message boards - salesforce.com support is not available for these applications.
 </span>

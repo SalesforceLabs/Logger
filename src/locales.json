@@ -278,6 +278,10 @@
     "en": "EULA",
     "de": "EULA"
   },
+  "opensource":{
+    "en": "Open Source",
+    "de": "Open Source"
+  },
   "logout":{
     "en": "Logout",
     "de": "Abmelden"

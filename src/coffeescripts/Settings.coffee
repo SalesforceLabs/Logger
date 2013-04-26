@@ -82,7 +82,7 @@ class Settings
       name: Platform.APP_NAME
       version: Platform.VERSION
       options1: [{label:L.get("share_on_chatter"), id:"shareChatter"}, {label:L.get("submit_feedback"), id:"feedback"}, {label:L.get("send_logs"), id:"logs"}, {label:L.get("follow_on_twitter"), id:"twitter"}]
-      options2: [{label:L.get("about"), id:"about"}, {label:L.get("eula"), id:"eula"}]
+      options2: [{label:L.get("about"), id:"about"}, {label:L.get("eula"), id:"eula"}, {label:L.get("opensource"), id:"opensource"}]
       options3: [{label:L.get("logout"), id:"logout"}]
       objects: objectSettings
       isRetina: UI.isRetina()
@@ -194,6 +194,9 @@ class Settings
         when "logs"
           LoggrUtil.tagEvent 'settingsAction', {type:"Send Logs"}
           Platform.sendLogs()
+        when "opensource"
+          LoggrUtil.tagEvent 'settingsAction', {type:"Open Source"}
+          Platform.web "https://github.com/ForceDotComLabs/Logger"
         when "logout"
           Dialog.show L.get("logout"), L.get("logout_confirm"), L.get("ok"), ->
             $("#overlay").spin "large", "white"
