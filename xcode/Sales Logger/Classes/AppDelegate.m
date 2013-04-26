@@ -81,8 +81,6 @@
     [Appirater setSignificantEventsUntilPrompt:-1];
     [Appirater setTimeBeforeReminding:2];
  
-    //[TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-    //[TestFlight takeOff:@"6c74a7b8a5853ae4e32b32d9fa806e32_ODQ4NjIyMDEyLTA0LTI2IDE0OjM4OjU0Ljk2MDg5NQ"];
     self.splashImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default@2x.png"]] autorelease];
     [self.splashImageView setFrame:[[UIScreen mainScreen] bounds]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
