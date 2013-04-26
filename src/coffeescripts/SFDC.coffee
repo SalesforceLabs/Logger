@@ -13,12 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 class SFDC
 
   # Count of pending API calls
-  @activityCount = 0
-
-  # Storage for the previous error  
-  # In same cases we need to know the previous for better error handling
-  # like the session timeout after being offline interrupted.
-  @previousError
+  @_activityCount = 0
 
   # Contact Constant
   @CONTACT = 'Contact'
@@ -60,7 +55,7 @@ class SFDC
   @allowRequestQueueing = false
 
   # Property to queue requests queueing after session expiration. Only done inside container.
-  @requestQueue = []
+  @_requestQueue = []
 
   # Set the session Id for container usage.  
   # `sid` Session Id
@@ -72,19 +67,19 @@ class SFDC
   @setReady: (isReady) ->
     SFDC.sessionAlive = isReady
     # If the session is active, execute any old queued up requests
-    SFDC.replayQueue()
+    SFDC._replayQueue()
 
   # Replay service queue
-  @replayQueue: ->
+  @_replayQueue: ->
     isOnline = true
     if SFHybridApp?
       isOnline = SFHybridApp.deviceIsOnline()
-    if SFDC.sessionAlive and isOnline and SFDC.allowRequestQueueing and SFDC.requestQueue.length
+    if SFDC.sessionAlive and isOnline and SFDC.allowRequestQueueing and SFDC._requestQueue.length
       # execute each method in the queue
-      SFDC.requestQueue.forEach (requestRetry) ->
+      SFDC._requestQueue.forEach (requestRetry) ->
         requestRetry()
       # mark the queue as empty
-      SFDC.requestQueue = []
+      SFDC._requestQueue = []
 
   # `instanceUrl` Instance Url like https://na1.salesforce.com.
   @setInstanceUrl: (instanceUrl) -> SFDC._instanceUrl = instanceUrl
@@ -294,13 +289,13 @@ class SFDC
       contentType: 'application/json; charset=utf-8'
       dataType: 'json'
       beforeSend: (xhr) ->
-        SFDC.activityCount++
+        SFDC._activityCount++
         Platform.showStatusBarActivityIndicator()
         if SFDC.isContainer
           xhr.setRequestHeader 'Accept', 'application/json'
           xhr.setRequestHeader 'Authorization', 'OAuth ' + SFDC._sid
       complete: () ->
-        if --SFDC.activityCount is 0
+        if --SFDC._activityCount is 0
           Platform.hideStatusBarActivityIndicator()
       success: (data) ->
         callback null, data
@@ -327,7 +322,7 @@ class SFDC
           if SFDC.allowRequestQueueing
             LoggrUtil.log "Session inactive. Adding the request to the queue!"
             # Add request to queue to be retried after authentication.
-            SFDC.requestQueue.push retryFn(401)
+            SFDC._requestQueue.push retryFn(401)
           else # If request queueing is not supported then just callback with error
             callback err, null
 
@@ -356,7 +351,7 @@ class SFDC
         callback jqXHR, null
       else if !SFDC.sessionAlive and SFDC.allowRequestQueueing
         LoggrUtil.log "Session inactive. Adding the request to the queue!"
-        SFDC.requestQueue.push retryFn()
+        SFDC._requestQueue.push retryFn()
       else
         $.ajax jqXHR
     
@@ -438,6 +433,6 @@ class SFDC
       
     callback err, null
 
-if document? then $(document).on 'online', -> SFDC.replayQueue()
+if document? then $(document).on 'online', -> SFDC._replayQueue()
 window?.SFDC = SFDC
 module?.exports = SFDC
