@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 class Platform
 
   # Version string. Build number is replaced on build server.
-  @VERSION = '1.4.0 {{BUILD_NUMBER}}'
+  @VERSION = '1.4.1 {{BUILD_NUMBER}}'
 
   # Name of the application
   @APP_NAME = "Logger"
