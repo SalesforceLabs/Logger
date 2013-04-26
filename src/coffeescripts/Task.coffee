@@ -20,6 +20,9 @@ class Task extends BaseAction
 
   # _return_ Flag if Chatter is enabled
   isChatterEnabled: ->
+    # Task creation is now implicitly posted to Chatter.
+    # Let's pretend it's off so we don't see any Chatter controls.
+    return false
     Config.chatterEnabled and Config.isFeedTrackingEnabled(@type)
 
   # `type` SObject type
