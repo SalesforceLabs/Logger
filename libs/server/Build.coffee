@@ -135,9 +135,12 @@ class Build
         console.log 'found stylus: %s', cfg.source + '/' + file
         stylusStr = fs.readFileSync cfg.source + "/" + file, "utf8"
         stylus(stylusStr).render (err, css) ->
-          filename = fileParts[0] + '.css'
-          console.log '=== Stylus Stylesheet ===\n' + cfg.source + '/' + file + ' to ' + cfg.destination + '/' + filename
-          # TODO only write when changes and show info when unchanged
-          fs.writeFileSync cfg.destination + '/' + filename, css, "utf8"
+          if not err
+            filename = fileParts[0] + '.css'
+            console.log '=== Stylus Stylesheet ===\n' + cfg.source + '/' + file + ' to ' + cfg.destination + '/' + filename
+            # TODO only write when changes and show info when unchanged
+            fs.writeFileSync cfg.destination + '/' + filename, css, "utf8"
+          else
+            console.log "Stylus failed " + err
 
 module.exports = Build
