@@ -134,7 +134,7 @@ class Build
       if fileParts[fileParts.length-1] is "styl" and fileParts.length > 1
         console.log 'found stylus: %s', cfg.source + '/' + file
         stylusStr = fs.readFileSync cfg.source + "/" + file, "utf8"
-        console.log "Styl source " + stylusStr
+        # console.log "Styl source " + stylusStr
         stylus(stylusStr).render (err, css) ->
           if not err
             filename = fileParts[0] + '.css'
