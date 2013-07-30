@@ -39,7 +39,7 @@ class Main
         , false
 
 
-  # Init function  
+  # Init function
   # Adds event listeners and checks if EULA has been accepted
   init: ->
     LoggrUtil.log "init"
@@ -62,7 +62,7 @@ class Main
     @search = new Search()
     @search.addEventListener Search.SELECT, (id) =>
       @showHash "#detail?id=#{id}"
-    
+
     # Check EULA
     @checkEULA =>
       @launch()
@@ -70,7 +70,7 @@ class Main
       $(document).on 'online', => @launch() if not @isLaunchComplete
 
 
-  # Check EULA and launch the app once EULA is accepted.  
+  # Check EULA and launch the app once EULA is accepted.
   # `callback` Callback function invoked when accepted
   checkEULA: (callback) ->
     LoggrUtil.isEulaAccepted (val) ->
@@ -96,7 +96,7 @@ class Main
       isOnline = SFHybridApp.deviceIsOnline()
     if not isOnline
       LoggrUtil.logConnectionError()
-    else 
+    else
       LoggrUtil.log 'device is online. Trying authentication'
       # Initiate authentication if a container app, else directly initialize the app.
       if cordova?
@@ -107,7 +107,7 @@ class Main
       else
         @run()
 
-  # Authenticate User  
+  # Authenticate User
   # `callback` Callback invoked when authentication is complete
   authenticate: (callback) ->
     if ContainerAuth?
@@ -161,7 +161,7 @@ class Main
     $('body div#app').empty().show()
     .append(new Hogan.Template(T.home).render({isRetina: UI.isRetina()}))
 
-    $('#mainNav li').on "touchstart", (event) =>
+    $('#mainNav li').hammer(UI.buttonHammerOptions).on "tap", (event) =>
       event.preventDefault()
       switch event.currentTarget.id
         when "recentNav" then @showHash '#recent' + Model.getLastType() + 's'
@@ -182,8 +182,8 @@ class Main
           LoggrUtil.log "Initial hash: #{hash}"
           @showHash if location.hash is '' then hash else location.hash
 
-  # Swtch content  
-  # `hash` Hash of the content  
+  # Swtch content
+  # `hash` Hash of the content
   # `state` Optional state when invoked from history.back
   showHash: (hash, state) ->
     LoggrUtil.log 'showHash ' + hash + ' current: ' + location.hash
@@ -238,7 +238,7 @@ class Main
         else
           throw new Error 'Unknown hash: ' + hash
 
-  
+
 
   # `partial` list, isAccount, isContact, isEmpty
   renderList: (partial, objectSettings) ->
@@ -311,7 +311,7 @@ class Main
       $('#Leads').addClass 'selectedType'
 
     $('#types li').hammer(UI.buttonHammerOptions)
-    .on 'touchstart', (event) =>
+    .on 'tap', (event) =>
       #LoggrUtil.tagEvent 'Switch type', {type:event.currentTarget.id}
       newHash = '#recent' + event.currentTarget.id
       if location.hash is newHash
@@ -328,10 +328,10 @@ class Main
       else
         @showHash newHash
 
-  # Shows a list of accounts or contacts.  
-  # Tries to get data from memory cache or loads it up when not available.  
-  # `type` Record type  
-  # `reset` Flag if the list should be cleared before loading the new one.  
+  # Shows a list of accounts or contacts.
+  # Tries to get data from memory cache or loads it up when not available.
+  # `type` Record type
+  # `reset` Flag if the list should be cleared before loading the new one.
   showList: (type, reset = false) ->
     Model.setLastType type
 
@@ -352,7 +352,7 @@ class Main
         if object.checked
           firstEnabled = object
         if object.id is type
-          objectEnabled = object.checked  
+          objectEnabled = object.checked
 
       if not objectEnabled
         if firstEnabled
@@ -380,4 +380,4 @@ $ ->
 # global sign-in function used for web version.
 window?.signIn = ->
   LoggrUtil.log 'signIn'
-  location.href = window.location.protocol + '//' + window.location.host + '/authenticate'  
+  location.href = window.location.protocol + '//' + window.location.host + '/authenticate'
