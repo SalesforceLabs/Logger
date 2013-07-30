@@ -14,7 +14,7 @@ superagent = require 'superagent'
 crypto = require 'crypto'
 
 class OAuth
-	
+
 	###
 	Encryption Algorithm
 	###
@@ -46,7 +46,7 @@ class OAuth
 		@clientSecret = @options.clientSecret
 
 	loginUrl: (promptLogin) ->
-		url = @loginServer + '/services/oauth2/authorize?' + 
+		url = @loginServer + '/services/oauth2/authorize?' +
 			#"scope=chatter_api refresh_token&" +
 			'response_type=code' +
 			'&format=json' +
@@ -65,10 +65,10 @@ class OAuth
 	###
 	codeHandler: (req, callback) ->
 		console.log "Code " + req.query.code
-		
+
 		url = @loginServer + '/services/oauth2/token'
 
-		payload = 
+		payload =
 			code: req.query.code
 			grant_type: 'authorization_code'
 			client_id: @clientId
@@ -89,14 +89,14 @@ class OAuth
 			console.log 'Get SID statusCode ' + response.statusCode
 			if response.statusCode == 200
 				req.session.sid = data.access_token
-				req.session.refreshToken = OAuth.encrypt data.refresh_token
+				data.refresh_token? req.session.refreshToken = OAuth.encrypt data.refresh_token
 				req.session.instanceUrl = data.instance_url
 				console.log "Session " + JSON.stringify req.session
 				callback {success: true}
 			else
 				console.log "Obtaining sid failed " + response.statusCode
 				callback {error: response}
-			).on 'error', (e) -> 
+			).on 'error', (e) ->
 				console.error e
 				callback {error: e}
 
@@ -111,7 +111,7 @@ class OAuth
 
 		if req.session.refreshToken
 			refreshToken = OAuth.decrypt req.session.refreshToken
-			payload = 
+			payload =
 				grant_type: 'refresh_token',
 				client_id: @clientId,
 				client_secret: @clientSecret,
@@ -124,12 +124,12 @@ class OAuth
 					callback {success: true}
 				else
 					callback {error: response}
-				).on 'error', (e) -> 
+				).on 'error', (e) ->
 					console.error e
 					callback {error: e}
-		else 
+		else
 			console.log 'No refresh token found.'
-			callback {error: 
+			callback {error:
 				statusCode: 401
 				text: 'No refresh token found. Skipping refresh.'
 			}

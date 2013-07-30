@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 express = require 'express'
 gzippo = require 'gzippo'
 routes = require './routes'
-hogan = require 'hogan'
+hogan = require 'hogan.js'
 adapter = require './libs/server/hogan-express.js'
 stylus = require 'stylus'
 assetManager = require 'connect-assetmanager'
@@ -47,6 +47,7 @@ isProd = app.settings.env is 'production'
 console.log 'isProd ' + isProd
 
 app.configure ->
+  console.log 'Dirname: ' + __dirname
   app.set 'views', __dirname + '/src/views'
   app.set 'view engine', 'hogan'
   app.use express.bodyParser()
@@ -65,9 +66,9 @@ app.configure ->
         .define('url', stylus.url({ paths: [__dirname + '/public'], limit:1000000 }))
     compress: isProd
     debug: !isProd
-  #app.use express.static __dirname + '/public'
-  app.use gzippo.staticGzip __dirname + '/public'
-  app.use gzippo.compress()
+  app.use express.static __dirname + '/public'
+  #app.use gzippo.staticGzip __dirname + '/public'
+  #app.use gzippo.compress()
   app.dynamicHelpers
     # CSRF token, depends on express.csrf middleware
     token: (req, res) ->
