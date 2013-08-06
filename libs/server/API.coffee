@@ -83,39 +83,16 @@ class API
   chatter: (req, resource, data, callback) ->
     action = 'chatter/feeds/'+resource+'/feed-items'
     console.log 'Chatter data: %s', JSON.stringify(data)
-    url = req.session.instanceUrl + '/services/data/v' + API.apiVersion + '/' + action
 
     text = data.body.messageSegments[0].text
-    restler.request url,
-      method: 'POST'
-      data: {text: text}
-      headers:
-          'Accept':'application/json'
-          'Authorization':'OAuth ' + req.session.sid
-          'Content-Type': 'application/json'
-    .on 'complete', (data, response) ->
-      callback null, data
-    .on 'error', (data, response) ->
-      callback data
-    
-    #@request req, 'POST', action, data, callback
+    @request req, 'POST', action, {text: text}, callback
 
   chatterUser: (req, callback) ->
     action = 'chatter/users/me'
     console.log 'Chatter action: %s', action
-    url = req.session.instanceUrl + '/services/data/v' + API.apiVersion + '/' + action
 
-    restler.request url,
-      method: 'GET'
-      headers:
-          'Accept':'application/json'
-          'Authorization':'OAuth ' + req.session.sid
-          'Content-Type': 'application/json'
-    .on 'complete', (data, response) ->
-      callback null, data
-    .on 'error', (data, response) ->
-      callback data
-    
+    @request req, 'GET', action, null, callback
+
 
   ###
   @param req Express request object
@@ -128,7 +105,7 @@ class API
   request: (req, method, action, data, callback, isRetry = false) ->
     url = req.session.instanceUrl + '/services/data/v' + API.apiVersion + '/' + action
     console.log 'request ' + method + ': ' + url + ' -> ' + JSON.stringify data
-    
+
 
     header =
       'Accept': 'application/json'
@@ -153,7 +130,7 @@ class API
                 if response.success
                   console.log 'Got new SID. Trying to execute request again.'
                   self.request req, method, action, data, callback, true
-                else 
+                else
                   callback response.error
             else
               console.log 'Retry with new SID failed again. Giving up.'
