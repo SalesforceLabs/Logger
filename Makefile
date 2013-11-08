@@ -8,6 +8,7 @@ nodejs:
 	mkdir -p public
 	rsync -r src/images/ public/images/
 	rsync libs/client/*.js public/javascripts/
+	rsync src/locales.json public/
 	node-dev app.coffee
 
 tdd:
