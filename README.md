@@ -115,7 +115,7 @@ For the NodeJS portion please have a look at `app.coffee` and `routes/index.coff
 
 ### Unit Tests
 
-Unit tests are build on top of [Mocha](http://visionmedia.github.com/mocha/) and [should](https://github.com/visionmedia/should.js).
+Unit tests are build on top of [Mocha](http://mochajs.org/) and [should](https://github.com/visionmedia/should.js).
 
     $ make tdd
 
